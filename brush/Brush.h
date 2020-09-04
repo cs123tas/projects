@@ -11,7 +11,7 @@ class Canvas2D;
 /**
  * @class Brush
  *
- * The superclass for all brushes.
+ * The superclass for all brushes!
  */
 class Brush {
 public:
