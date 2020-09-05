@@ -215,6 +215,8 @@ void MainWindow::dataBind() {
               ui->cameraNearSlider, ui->cameraNearTextbox, settings.cameraNear, 0.1, 50))
     BIND(FloatBinding::bindSliderAndTextbox(
               ui->cameraFarSlider, ui->cameraFarTextbox, settings.cameraFar, 0.1, 50))
+    initializeCamtransFrustum(); // always set the viewing frustum to reasonable settings when we start the program
+
 
     // Ray dock
     BIND(BoolBinding::bindCheckbox(ui->raySuperSamping,          settings.useSuperSampling))
@@ -487,6 +489,14 @@ void MainWindow::resetUpVector() {
 }
 
 void MainWindow::resetSliders() {
+    ui->cameraFovTextbox->setText(QString::number(55, 'f', 1));
+    ui->cameraNearTextbox->setText(QString::number(.1, 'f', 1));
+    ui->cameraFarTextbox->setText(QString::number(50, 'f', 1));
+    QCoreApplication::processEvents();
+    update();
+}
+
+void MainWindow::initializeCamtransFrustum() {
     ui->cameraFovTextbox->setText(QString::number(55, 'f', 1));
     ui->cameraNearTextbox->setText(QString::number(.1, 'f', 1));
     ui->cameraFarTextbox->setText(QString::number(50, 'f', 1));

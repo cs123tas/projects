@@ -28,6 +28,9 @@ void SupportCanvas2D::resize(int width, int height) {
 
     // set the new image to black
     memset(m_image->bits(), 0, width * height * sizeof(RGBA));
+    for (int i = sizeof(RGBA)-1; i < width * height * sizeof(RGBA); i+=sizeof(RGBA)) {
+        m_image->bits()[i] = 255;
+    }
 
     // Reset the marquee when we change canvas size
     m_marqueeStart = m_marqueeStop;

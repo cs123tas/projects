@@ -46,6 +46,9 @@ private:
     // Sets up the data bindings between the UI and app settings
     void dataBind();
 
+    // initializes settings and ui for camtrans viewing frustum
+    void initializeCamtransFrustum();
+
     // [C++ Note] private members start with m_
     QList<DataBinding*> m_bindings;
     QList<QButtonGroup*> m_buttonGroups;

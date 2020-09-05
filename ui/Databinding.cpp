@@ -11,6 +11,7 @@ IntBinding* IntBinding::bindSliderAndTextbox(
 {
     // Bind the slider, the textbox, and the value together
     IntBinding *binding = new IntBinding(value);
+    connect(slider, SIGNAL(valueChanged(int)), binding, SLOT(intChanged(int)));
     connect(slider, SIGNAL(sliderMoved(int)), binding, SLOT(intChanged(int)));
     connect(textbox, SIGNAL(textChanged(QString)), binding, SLOT(stringChanged(QString)));
     connect(binding, SIGNAL(updateInt(int)), slider, SLOT(setValue(int)));
@@ -61,6 +62,7 @@ UCharBinding* UCharBinding::bindSliderAndTextbox(
         QSlider *slider, QLineEdit *textbox, unsigned char &value, int minValue, int maxValue) {
     // Bind the slider, the textbox, and the value together
     UCharBinding *binding = new UCharBinding(value);
+    connect(slider, SIGNAL(valueChanged(int)), binding, SLOT(ucharChanged(int)));
     connect(slider, SIGNAL(sliderMoved(int)), binding, SLOT(ucharChanged(int)));
     connect(textbox, SIGNAL(textChanged(QString)), binding, SLOT(stringChanged(QString)));
     connect(binding, SIGNAL(updateInt(int)), slider, SLOT(setValue(int)));
@@ -116,6 +118,7 @@ FloatBinding* FloatBinding::bindSliderAndTextbox(
         QSlider *slider, QLineEdit *textbox, float &value, float minValue, float maxValue) {
     // Bind the slider, the textbox, and the value together
     FloatBinding *binding = new FloatBinding(value);
+    connect(slider, SIGNAL(valueChanged(int)), binding, SLOT(intChanged(int)));
     connect(slider, SIGNAL(sliderMoved(int)), binding, SLOT(intChanged(int)));
     connect(textbox, SIGNAL(textChanged(QString)), binding, SLOT(stringChanged(QString)));
     connect(binding, SIGNAL(updateInt(int)), slider, SLOT(setValue(int)));
