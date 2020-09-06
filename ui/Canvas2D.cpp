@@ -18,7 +18,7 @@
 #include "Settings.h"
 #include "RayScene.h"
 
-
+#include <QCoreApplication>
 #include <QPainter>
 #include "brush/Brush.h"
 #include "brush/ConstantBrush.h"
@@ -95,6 +95,10 @@ void Canvas2D::filterImage() {
             // fill in the rest
     }
 
+    // Leave this code here! This code ensures that the Canvas2D will be completely wiped before
+    // drawing the new image.
+    repaint(rect());
+    QCoreApplication::processEvents();
 }
 
 // ********************************************************************************************
