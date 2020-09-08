@@ -28,7 +28,7 @@ void SupportCanvas2D::resize(int width, int height) {
 
     // set the new image to black
     memset(m_image->bits(), 0, width * height * sizeof(RGBA));
-    for (int i = sizeof(RGBA)-1; i < width * height * sizeof(RGBA); i+=sizeof(RGBA)) {
+    for (int i = sizeof(RGBA)-1; (unsigned long) i < width * height * sizeof(RGBA); i+=sizeof(RGBA)) {
         m_image->bits()[i] = 255;
     }
 
@@ -90,7 +90,7 @@ bool SupportCanvas2D::loadImage(const QString &file) {
 
         // Show the new image.
         resize(temp->width(), temp->height());
-        memcpy(data(), temp->bits(), temp->byteCount());
+        memcpy(data(), temp->bits(), temp->sizeInBytes());
         update();
 
         // Remember the filename so we can revert to it

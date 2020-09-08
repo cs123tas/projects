@@ -50,6 +50,7 @@ void Canvas2D::paintEvent(QPaintEvent *e) {
 
 void Canvas2D::settingsChanged() {
     // TODO: Process changes to the application settings.
+    std::cout << "Canvas2d::settingsChanged() called. Settings have changed" << std::endl;
 }
 
 // ********************************************************************************************
@@ -65,18 +66,22 @@ void Canvas2D::mouseDown(int x, int y) {
     // You're going to need to leave the alpha value on the canvas itself at 255, but you will
     // need to use the actual alpha value to compute the new color of the pixel
 
+    std::cout << "Canvas2d::mouseDown() called" << std::endl;
+
+
 //    bool fixAlphaBlending = settings.fixAlphaBlending; // for extra/half credit
 
 }
 
 void Canvas2D::mouseDragged(int x, int y) {
     // TODO: [BRUSH] Mouse interaction for Brush.
+    std::cout << "Canvas2d::mouseDragged() called" << std::endl;
 
 }
 
 void Canvas2D::mouseUp(int x, int y) {
     // TODO: [BRUSH] Mouse interaction for Brush.
-
+    std::cout << "Canvas2d::mouseUp() called" << std::endl;
 }
 
 
