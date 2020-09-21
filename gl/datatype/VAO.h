@@ -36,7 +36,6 @@ private:
     GLuint m_numVertices;
     int m_size;
     GLenum m_triangleLayout;
-//    VBO::GEOMETRY_LAYOUT m_triangleLayout;
 };
 
 }}

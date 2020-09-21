@@ -8,6 +8,8 @@ CS123
 CS123.app
 qrc_resources.cpp
 .qmake.stash
+*.Debug
+*.Release
 
 *.pbxproj
 

@@ -10,7 +10,6 @@
 #include "gl/datatype/FBO.h"
 #include "Settings.h"
 
-
 namespace CS123 { namespace GL {
 
     class Shader;
@@ -18,6 +17,8 @@ namespace CS123 { namespace GL {
     class FullScreenQuad;
 
 }}
+
+class Shape;
 
 /**
  *
@@ -66,6 +67,9 @@ private:
     CS123SceneMaterial   m_material;
 
     glm::vec4 m_lightDirection = glm::normalize(glm::vec4(1.f, -1.f, -1.f, 0.f));
+
+    // essentially an OpenGLShape from lab 1
+    std::unique_ptr<Shape> m_shape;
 
     int m_width;
     int m_height;
