@@ -8,7 +8,12 @@
 #include<memory>
 #include <vector>
 
-/** inserts a glm::vec3 into a vector of floats */
+/**
+ *
+ * inserts a glm::vec3 into a vector of floats
+ * this will come in handy if you want to take advantage of vectors to build your shape
+ * make sure to call reserve beforehand to speed this up
+ */
 void insertVec3(std::vector<float> &data, glm::vec3 v);
 
 namespace CS123 { namespace GL {

@@ -3,6 +3,7 @@
 
 #include "Shape.h"
 
+// hand-written cube points and normals.. if only there were a way to do this procedurally
 #define CUBE_DATA_POSITIONS {\
         -0.5f,-0.5f,-0.5f, \
         -1.f, 0.f, 0.f, \
