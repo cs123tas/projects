@@ -6,7 +6,7 @@
 
 using namespace CS123::GL;
 
-void insertVec3(std::vector<float> &data, glm::vec3 v){
+inline void insertVec3(std::vector<float> &data, glm::vec3 v){
     data.push_back(v.x);
     data.push_back(v.y);
     data.push_back(v.z);
