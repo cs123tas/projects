@@ -1,5 +1,5 @@
-#ifndef SHAPE_H
-#define SHAPE_H
+#ifndef OPENGLSHAPE_H
+#define OPENGLSHAPE_H
 
 /** imports the OpenGL math library https://glm.g-truc.net/0.9.2/api/a00001.html */
 #include <glm/glm.hpp>
@@ -24,19 +24,23 @@ namespace CS123 { namespace GL {
 class VAO;
 }}
 
-class Shape
+class OpenGLShape
 {
 public:
-    Shape();
-    virtual ~Shape();
+    OpenGLShape();
+    virtual ~OpenGLShape();
     void draw();
 
 protected:
-    /** builds the VAO, pretty much the same as from lab 1 */
-    void buildVAO();
+    /**
+     * initializes the relavant openGL properties for the shape
+     * don't worry about what exactly this function is doing, you'll learn more about that later in the course!
+     * look at ExampleShape.cpp for it's demonstrated usage
+     */
+    void initializeOpenGLShapeProperties();
 
     std::vector<GLfloat> m_vertexData;
     std::unique_ptr<CS123::GL::VAO> m_VAO;
 };
 
-#endif // SHAPE_H
+#endif // OPENGLSHAPE_H

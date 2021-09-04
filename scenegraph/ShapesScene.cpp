@@ -1,6 +1,6 @@
 #include "ShapesScene.h"
 #include "Camera.h"
-#include "shapes/Shape.h"
+#include "shapes/OpenGLShape.h"
 #include <SupportCanvas3D.h>
 #include <QFileDialog>
 

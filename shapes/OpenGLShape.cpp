@@ -1,4 +1,4 @@
-#include "Shape.h"
+#include "OpenGLShape.h"
 #include "gl/datatype/VAO.h"
 #include "gl/datatype/VBO.h"
 #include "gl/datatype/VBOAttribMarker.h"
@@ -6,17 +6,17 @@
 
 using namespace CS123::GL;
 
-Shape::Shape() :
+OpenGLShape::OpenGLShape() :
     m_VAO(nullptr)
 {
 
 }
 
-Shape::~Shape()
+OpenGLShape::~OpenGLShape()
 {
 }
 
-void Shape::draw() {
+void OpenGLShape::draw() {
     if (m_VAO) {
         m_VAO->bind();
         m_VAO->draw();
@@ -24,7 +24,7 @@ void Shape::draw() {
     }
 }
 
-void Shape::buildVAO() {
+void OpenGLShape::initializeOpenGLShapeProperties() {
     const int numFloatsPerVertex = 6;
     const int numVertices = m_vertexData.size() / numFloatsPerVertex;
 

@@ -18,7 +18,7 @@ namespace CS123 { namespace GL {
 
 }}
 
-class Shape;
+class OpenGLShape;
 
 /**
  *
@@ -68,8 +68,7 @@ private:
 
     glm::vec4 m_lightDirection = glm::normalize(glm::vec4(1.f, -1.f, -1.f, 0.f));
 
-    // essentially an OpenGLShape from lab 1
-    std::unique_ptr<Shape> m_shape;
+    std::unique_ptr<OpenGLShape> m_shape;
 
     int m_width;
     int m_height;
