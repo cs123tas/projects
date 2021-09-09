@@ -1,18 +1,17 @@
-```
-CS123 Intro. to Computer Graphics Ritchie
-```
 # Project 1 Brush
 
-### Introduction to Computer Graphics, Fall 2020
+### Introduction to Computer Graphics, Fall 2021
 
 ## 1 Instructions
 
-_Due Date_ : 10:00 PM EST on Sep 21, 2020.
+_Due Date_ : 10:00 PM EST on Sep 20, 2021.
+
+
 Complete this assignment by yourself with no help from anyone or
 anything except a current CS123 TA, the lecture notes, official text-
 book, and the professor. Hand in the assignment using Gradescope
 (which you’ll learn about through other handins) no later than 10:
-PM on Sep 21, 2020. You are allowed to use up to 3 late days on
+PM on Sep 20, 2021. You are allowed to use up to 3 late days on
 this assignment.
 
 ## 2 Introduction
@@ -36,7 +35,7 @@ more precisely, a few different types of airbrush-like editing tools.
 Your program will also be able to save the images that you have
 edited.
 To get a general sense of what the program you’ll write looks like,
-see/course/cs1230/bin/cs1230_demo. You can take a look at the
+see `/course/cs1230/bin/cs1230_demo`. You can take a look at the
 video here to get an idea of how your program should look and
 behave as well. Your program may not implement all the features
 shown in the demo; you get to choose how much you want to do for
@@ -408,10 +407,10 @@ structure. Thus all the header files (the ones ending in .h) are
 gathered together, albeit divided into logical groups, and all the
 Sourcefiles are too. If you double click on a file at the left, it’ll open
 up in the main window area on the right. I’ll describe files in the
-Project view using»separators, so thatHeaders»Brush»Brush.h
+Project view using » separators, so that Headers » Brush » Brush.h
 indicates the file in the Headers section, Brush subsection, called
-Brush.h. For ordinary file-system paths, I’ll use slashes, so that file
-is alsoprojects/brush/Brush.h.
+`Brush.h`. For ordinary file-system paths, I’ll use slashes, so that file
+is also `projects/brush/Brush.h`.
 Let’s look in theHeaderssection; theSourcessection is completely
 parallel. The subsections are brush, camera, gl, glew-...,
 lib, scenegraph, ui. Three of these are easy: brush, camera,
@@ -422,12 +421,11 @@ project. If you’ve “built” the project, there may be a file (you may
 have to close and reopen the project or QtCreator to see it), called
 
 
-ui_mainwindow.h, in which the soleCanvas2Dfor the project is
+`ui_mainwindow.h`, in which the soleCanvas2Dfor the project is
 declared. You’ll never need to look at this file, but if you do, you’ll
-see that when an instance of theUi_MainWindowclass is created,
-thatCanvas2Dis also created.
-Theglsection is all the stuff related to OpenGL, which is the graph-
-ics library that we’re using in CS123, at least indirectly. OpenGL is
+see that when an instance of the `Ui_MainWindow` class is created,
+that `Canvas2D` is also created.
+The gl section is all the stuff related to OpenGL, which is the graphics library that we’re using in CS123, at least indirectly. OpenGL is
 basically the glue that ties together processing on the graphics card
 with processing on the CPU — it’s kind of an operating-system-level
 piece of software. Of course, just as different CPUs have different
@@ -442,34 +440,34 @@ with what happens on the graphics card.” Part of the point of the
 Qt library is to sit atop these and isolate the user from having to
 consider them. You’ll also be creating classes in the first lab that
 will be added to this folder in the next project.
-Continuing, there’slib, which contains some TA code for supporting
+Continuing, there’s lib, which contains some TA code for supporting
 various projects. The only relevant one of these, for this project,
-is theRGBAstructure, which is used to store the value represented
-by each pixel. If you look into theRGBAstructure, you’ll see that
+is the `RGBA` structure, which is used to store the value represented
+by each pixel. If you look into the `RGBA` structure, you’ll see that
 it’s just a fancy name for dealing with four adjacent bytes of data,
 but provides some helpful functions for adding or subtracting pixel
 values, for instance.
 Next, there’s theuisection. Most of these items you’ll never touch,
-butSettingsandCanvas2Dwill matter to you.
+but`Settings` and `Canvas2D` will matter to you.
 
-- TheMainWindowclass describes the appearance and behavior
+- The `MainWindow` class describes the appearance and behavior
     of the interface overall.
 - As you’ll have seen from the demo, one part of the interface is
 
 
 a canvas on the right-hand side; above this are a pair of options
 to make it a 2D canvas or a 3D one. The appearance/be-
-havior of these two canvases are defined bySupportCanvas2D
-andSupportCanvas3D, which are basically just thin wrappers
+havior of these two canvases are defined by `SupportCanvas2D`
+and `SupportCanvas3D`, which are basically just thin wrappers
 around certain Qt-defined structures, presenting to you, the
 student, a relatively simple interface.
 
-- The Canvas2D class derives from SupportCanvas2D.
+- The `Canvas2D` class derives from `SupportCanvas2D`.
     It has utility methods to make each of the 2D
     projects simpler. For the Brush assignment, these are
-    mouseDown, mouseUp. mouseDraggedandsettingsChanged;
+    `mouseDown`, `mouseUp`, `mouseDragged` and `settingsChanged`;
     for those who want to get fancy and allow for changing the size
-    of the window,notifySizeChangemay also be useful. You
+    of the window,`notifySizeChange` may also be useful. You
     can ignore the other methods — the ones associated to other
     projects —- in this class. As you might guess, when the user
     clicks the mouse in the 2D canvas of the interface, Qt calls the
@@ -478,43 +476,43 @@ student, a relatively simple interface.
     look different (i.e., by adding paint to the canvas). You do this
 with a three-step process:
 1. Request from Qt an array of data describing what’s cur-
-rently displayed on the canvas. Thedata method of
-SupportCanvas2Dreturns a pointer to an array ofRGBA
+rently displayed on the canvas. The `data` method of
+`SupportCanvas2D` returns a pointer to an array of `RGBA`
 values representing the canvas’s contents.
 2. Change some of the values in this array of data. For in-
 stance, if you’re applying paint with a red constant brush,
-you might setdata[i]to be anRGBAwhose contents are
+you might setdata[i]to be an `RGBA` whose contents are
 {255, 0, 0, 255}for several values of _i_ , one correspond-
 ing to each pixel that needs paint applied. Changing these
 values, i.e., altering the contents of some variable in the
 CPU of your computer, has absolutely no effect on the
 displayed canvas, however. The displayed canvas contents
 are based entirely on stuff happening in the GPU.
-3. Invoke theupdatemethod of theSupportCanvas2D. This
+3. Invoke the `update` method of the `SupportCanvas2D`. This
 
 
 
-takes the altereddataarray and sends it to the GPU
-by invoking the right OpenGL functions. Whenupdate
+takes the altered `data` array and sends it to the GPU
+by invoking the right OpenGL functions. When `update`
 returns, the canvas in the UI will be displaying the new
 contents.
 
-- TheDatabindingclass connects visual interface elements like
+- The `Databinding` class connects visual interface elements like
     sliders or text boxes to variables that you as a programmer
     can work with. In particular, it’s used to connect the “radius”
-    slider, for instance, to thebrushRadiusmember of aSettings
+    slider, for instance, to the `brushRadius` member of a `Settings`
     structure.
-- TheSettingsclass is the main tool for connecting you, the
+- The `Settings` class is the main tool for connecting you, the
     programmer, with what the support-code provided interface is
-    doing. There’s a single instance,settings, ofSettingscreated
+    doing. There’s a single instance,`settings`, of `Settings` created
     in the project. The other parts of the interface interact with
-    settingsso that when the user adjusts the “radius” slider for
-    the brush, for instance, the valuesettings.brushRadiusis al-
-    tered. Whenever any setting is changed, thesettingsChanged
-    method ofCanvas2Dis called, allowing you, the programmer,
+    `settings` so that when the user adjusts the “radius” slider for
+    the brush, for instance, the value `settings.brushRadius` is al-
+    tered. Whenever any setting is changed, the `settingsChanged`
+    method of `Canvas2D` is called, allowing you, the programmer,
     to respond as you see fit.
 
-Thissettingsstructure is not a pretty piece of design, but it gets
+This `settings` structure is not a pretty piece of design, but it gets
 the job done. When you’re told the setting changed, you might ask
 "Well, which _one_ changed?" The only way to tell whether the radius
 changed is to have recorded the radius previously, and see whether
@@ -524,7 +522,7 @@ radius!) There’s a little more discussion of this below.
 ### 5.1 The UI
 
 
-InForms»ui»MainWindow.uiis a file that describes, in some Qt-
+In Forms » ui » MainWindow.ui is a file that describes, in some Qt-
 specific way, the appearance of the main window of our application,
 along with its menubar, etc. If, in QtCreator, you double-click on this
 item, a UI editor will show up, and you can see how you might choose
@@ -533,27 +531,25 @@ to move the label on the radius-slider up by one millimeter, or change
 the font on the labels for the various brush types. If you were to click
 on the "Constant" radio-button in the Brush panel, you’d see lots of
 information about it displayed; in particular, you’d see it’s associated
-with an object namebrushTypeConstant. InMainWindow.cpp, that
+with an object namebrush `TypeConstant`. In `MainWindow.cpp`, that
 name gets used to tie together that radio button with other parts
 of the code. In particular, at line 138 you’d see that this interface
-element is “bound” tosettings.brushType, so that whenever a
-user clicks this radio-button, the value insettings.brushTypeis
+element is “bound” to `settings.brushType`, so that whenever a
+user clicks this radio-button, the value in `settings.brushType` is
 altered.
 
 ### 5.2 The main program
 
 
-InSources»main.cpp, we have the main program for this appli-
-cation. It creates a QtQApplicationinstance calledapp, and a
-MainWindowinstancew. ThisMainWindowinstance also creates a
-single instance of aCanvas2D. The main program then ‘shows’ the
-windoww, and invokes theexecmethod of the QApplication. This
+In Sources » main.cpp, we have the main program for this application. It creates a `QtQApplication` instance called `app`, and a
+`MainWindow` instance `w`. This `MainWindow` instance also creates a
+single instance of a `Canvas2D`. The main program then ‘shows’ the
+window `w`, and invokes the `exec` method of the `QApplication`. This
 hides from you, the programmer, a complex sequence of operation.
 Qt communicates (via OpenGL) with the GPU to say that it wants
 to run a GPU program that will display things in a certain region
 of the display. Qt also creates various objects in CPU memory (for
-example, thesettingsstructure), some of which represent visual el-
-ements in the displayed window, and others of which (likesettings)
+example, thesettingsstructure), some of which represent visual elements in the displayed window, and others of which (like `settings`)
 serve other purposes. Qt then establishes a connection between that
 GPU program and the CPU objects, so that when the user clicks
 somewhere in the displayed window, these two entities — the CPU
@@ -562,26 +558,26 @@ the programmer, hides all details of this communication.
 All that you, the programmer, need to know is that when the user
 clicks on an interface element like a radio-button, two things happen:
 
-1. Some component of thesettingsstructure is altered.
-2. ThesettingsChangedmethod of aCanvas2Dinstance is called.
+1. Some component of the `settings` structure is altered.
+2. The `settingsChanged` method of a `Canvas2D` instance is called.
 
 
 
-What instance? The one that theMainWindowobject created
+What instance? The one that the `MainWindow` object created
 and associated to the drawing-area of the application.
 
-Youl typically respond to this by altering, in thesettingsChanged
-method, someBrushobject in your program.
+Youl typically respond to this by altering, in the `settingsChanged`
+method, some `Brush` object in your program.
 
 What about a click in the canvas area of the window?
 
 When you, the programmer, want to respond to such a mouse-click,
-you put code in themouseDownmethod ofCanvas2D. This code, as
+you put code in the `mouseDown` method of `Canvas2D`. This code, as
 described above, may ask for the pixel-contents of the canvas by
-invoking thedatamethod. The execution of that method involves Qt
+invoking the `data` method. The execution of that method involves Qt
 asking OpenGL to communicate with the GPU, which then transfers
 a large block of data to the CPU, which you, the programmer, see as
-the return-value fromdata. You alter that returned array of pixels
+the return-value from `data`. You alter that returned array of pixels
 by ‘adding paint’, but in doing so, you’re merely altering an array
 in CPU memory. When you invoke theupdatemethod (which has
 been inherited from the Qt object representing the canvas), that
@@ -593,26 +589,26 @@ appearance of the canvas on your computer actually changes.
 
 So the big picture, from your point of view, is this:
 
-- there is a single instance of theSettingsclass, calledsettings;
-    it’s declared inSettings.cpp, and mentioned inSettings.h
-    so that any code that includesSettings.hhas access to this
-    instance. In particular, your code in theCanvas2Dclass can
+- there is a single instance of the `Settings` class, called `settings`;
+    it’s declared in `Settings.cpp`, and mentioned in `Settings.h`
+    so that any code that includes `Settings.h` has access to this
+    instance. In particular, your code in the `Canvas2D` class can
     access this instance.
-- There’s a single instance of theCanvas2Dclass, created during
-    the setting up of theMainWindowinmain.cpp.
+- There’s a single instance of the `Canvas2D` class, created during
+    the setting up of the `MainWindow` in `main.cpp`.
 
 _All of your interaction with the Qt application will be through these
 instances._
 
 
-Within your work on theCanvas2D, you’ll also need to work with
+Within your work on the `Canvas2D`, you’ll also need to work with
 various brush types.
 To work on this project, you’ll edit the various Brush classes (al-
 though you’ll probably leaveBrushuntouched), and within theui
-section, you’ll editCanvas2D.[cpp, h]. It’s perfectly OK to add
+section, you’ll edit `Canvas2D.[cpp, h]`. It’s perfectly OK to add
 methods, member variables, etc., to these classes.
-Obviously at some point you’ll need to create and hold onto aBrush.
-This should be part of (i.e., a member variable of) theCanvas2D
+Obviously at some point you’ll need to create and hold onto a `Brush`.
+This should be part of (i.e., a member variable of) the `Canvas2D`
 class; when the sole instance of this class is created, you’ll want to
 create aBrushas part of it.
 Another aside on software design: we have the constant, linear,
@@ -622,8 +618,8 @@ the color associated to the current brush should be changed. But
 then we also have the smudge brush, which has no intrinsic color.
 It picks up paint from the canvas. What should we do when the
 color sliders are adjusted? In one design, we’d have an intermediate
-class (say,ColorBrush, that’s a parent to constant, linear, and
-quadratic brushes, but not theSmudgeBrush. When the user selects
+class (say, `ColorBrush`, that’s a parent to constant, linear, and
+quadratic brushes, but not the `SmudgeBrush`. When the user selects
 the smudge-brush option in the interface, the color sliders would be
 greyed-out. That results in a lot of complexity for something that
 really makes almost no difference, so we put the brush-color into
@@ -634,53 +630,33 @@ exactly the same thing no matter what type of brush you have – no
 special-case handling. This lets you concentrate your efforts on the
 things we want you to learn in this assignment: masks, pixel-access,
 color-blending.
-What about settings? WhensettingsChangedis called, all that you,
-the programmer, know is that something in the globalsettings
+What about settings? When `settingsChanged` is called, all that you,
+the programmer, know is that something in the global `settings`
 structure is different from what it was a moment ago. Did the
 radius change? Did the color change? Did the use choose a new
 
 
 kind of brush? You have to figure that out. So you might want to
-comparesettings.brushRadiusto the previous radius-value. To
+compare `settings.brushRadius` to the previous radius-value. To
 do so, you’ll need to record the previous radius-value. This suggests
-you might want to add not only aBrushtoCanvas2D, but also an
-intwith a name likem_current_radius.
-In short:Canvas2Dis where you’ll want to store any persistent data
+you might want to add not only a `Brush` to `Canvas2D`, but also an
+intwith a name like `m_current_radius`.
+In short: `Canvas2D` is where you’ll want to store any persistent data
 in your program.
-NB: Suppose you decide you want to add aBrush, or aBrush-
-reference, or aBrush-pointer as a member ofCanvas2D, and try
+NB: Suppose you decide you want to add a `Brush`, or a `Brush`-reference, or a `Brush`-pointer as a member of `Canvas2D`, and try
 typing something like this:
 private:
 
-Brush m_brush;
+`Brush m_brush;`
 
 
-You’ll get an error saying thatBrushdoesn’t mean anything. That
-means that you need to alterCanvas2D.hto includeBrush.h. Don’t
+You’ll get an error saying that `Brush` doesn’t mean anything. That
+means that you need to alter `Canvas2D.h` to include `Brush.h`. Don’t
 be shy: go ahead and include any header files you find you need.
 
 ## 6 Getting Started
 
-To start work on this assignment, you will need to first copy the
-support code to your directory (preferably a subdirectory thereof).
-The support code is located on the course’s Github. You should copy
-the entire projects directory to your own CS123 course directory to
-make changes:
-cd .../course/cs123/
-git clone https://github.com/cs123tas/projects.git
-
-At this point you’ll see.../course/cs123/projects/, which con-
-tains, among other things,CS123.pro, which is a QtCreator project
-file. Double-clicking on it should open QtCreator and get you ready
-
-
-to start work.
-Your most frequent operation will probably be to press F5, the “run
-button” in Qt Creator, to re-build and run your project.
-Code carefully! Poor design and coding decisions now will come
-back to haunt you later.
-Explore the code, too. You will be using the same support code for
-the rest of the semester, as your projects build upon one another.
+To start work on this assignment, you will need to first fill out our [Getting Started form](https://docs.google.com/forms/d/e/1FAIpQLSfjN1w1alib4UWw4Ln8MSaphMXd8FN6Dyjw6QDtspmOwS7JkA/viewform). Once you've done so, use this [GitHub Classroom invite link](https://classroom.github.com/a/jGhMdNNB) to create your personal `projects` repository. You will then clone your repository to your local machine to work on it!
 
 ## 7 Support Code
 
@@ -692,42 +668,42 @@ about:
 
 
 You don’t need to edit this file.
-The global staticsettingsvariable, declared inSettings.cppand
-Settings.h, allows you to easily retrieve parameters set by the GUI
+The global static `settings` variable, declared in `Settings.cpp` and
+`Settings.h`, allows you to easily retrieve parameters set by the GUI
 interface. Every time a setting like the brush-radius is changed, the
-support code alters the corresponding member ofsettings, and
-calls thesettingsChangedmethod ofCanvas2Dso that you can
+support code alters the corresponding member of `settings`, and
+calls the `settingsChanged` method of `Canvas2D` so that you can
 respond to the change.
 These include:
+'''
 int brushType;
 int brushRadius;
 int brushRed;
 int brushGreen;
 int brushBlue;
 int brushAlpha;
-
+'''
 
 The user can interactively change various parameters for the airbrush
 including color (including alpha), radius, and distribution. All the
 sliders pass integers in the range of 0 to 255. It’s not necessary
 to query the sliders for their values, because as mentioned, at any
 change, the value produced by that change will be recorded in some
-field of thesettingsand thesettingsChangedcallback will be
+field of the `settings` and the `settingsChanged` callback will be
 invoked.
 
 When the user selects one of the distribution radio buttons (constant,
-linear, etc.), one of the enum values defined insettings.hwill be
-assigned to thebrushTypevariable.
+linear, etc.), one of the enum values defined in `settings.h` will be
+assigned to the `brushType` variable.
 
-TheBrush Radiusslider, bound to thebrushRadiussetting, con-
-trols how large the brush is. The value of the slider should correspond
+The Brush Radius slider, bound to the `brushRadius` setting, controls how large the brush is. The value of the slider should correspond
 to how many pixels away from the center the mask extends. Note
 that the mask should always have an odd width and height; thus, if
 the radius is 1 , the mask width and height should be 3 , if the radius
 is 3 , the mask width and height should be 7 , etc. If the radius is 0 ,
 the mask width and height should be 1.
 
-The “Alpha” slider, bound to thebrushAlphasetting, controls how
+The “Alpha” slider, bound to the `brushAlpha` setting, controls how
 much paint is laid down when the brush is applied (flow). For
 example, if the current brush is a constant distribution, and flow is
 set to 255 , then the color being laid down should completely replace
@@ -739,22 +715,19 @@ combination model that mimics reality.
 
 ### 7.2 canvas2d.[cpp, h]
 
-Canvas2Dwill be your implementation of a 2-dimensional image
+`Canvas2D` will be your implementation of a 2-dimensional image
 canvas. You will be using this canvas for all projects in this course
-which require pixel-level manipulation of images, which are BRUSH,
-
-
-FILTER, INTERSECT, and RAY.
-TheCanvas2Dclass you are given extends fromSupportCanvas2D,
+which require pixel-level manipulation of images, which are BRUSH, FILTER, INTERSECT, and RAY.
+The `Canvas2D` class you are given extends from `SupportCanvas2D`,
 which provides several key facilities for you:
 
-- You can resize the canvas by callingresize(). The canvas is
+- You can resize the canvas by calling `resize()`. The canvas is
     not automatically resized when the GUI resizes; rather, scroll
     bars allow you to view the entire image.
-- Image load and save.loadImage()andsaveImage()
-- Mouse events – mouseDown(), mouseDragged(), and
-    mouseUp().
-- Access to the raw image pixel data withdata()– keep reading
+- Image load and save. `loadImage()` and `saveImage()`
+- Mouse events – `mouseDown()`, `mouseDragged()`, and
+    `mouseUp()`.
+- Access to the raw image pixel data with `data()` – keep reading
     for more on this
 
 ### 7.3 Dealing with raw image pixel data
@@ -769,24 +742,20 @@ run. The other is that speed is paramount in computer graphics,
 and operating directly with pixel data is efficient. Though speed
 may not be a factor in Brush, it will be much more important in
 later assignments. To get the raw image data, you will need to use
-theCanvas2D::data()method. Thedata()method will return a
+the `Canvas2D::data()` method. The `data()` method will return a
 pointer to the beginning of the block of memory used to store the
-canvas. In graphics, you will almost never seeputandgetmethods
+canvas. In graphics, you will almost never see `put` and `get` methods
 being used for pixels.
-You may notice thatdata()returns anRGBA*. This is a pointer to
-the beginning of an array ofRGBAs. EachRGBAis a 4-byte struct
-with red, green, blue, and alpha values (in that order) ranging from 0
-
-
-
-to 255. You can either access the members of each RGBA using the
-.r .g, .b, .a fields, or you can cast theRGBA* to anunsigned char*.
-The support code only looks at the RGB values in eachRGBA, so you
+You may notice that `data()` returns an `RGBA*`. This is a pointer to
+the beginning of an array of `RGBA`s. Each `RGBA` is a 4-byte struct
+with red, green, blue, and alpha values (in that order) ranging from 0 to 255. You can either access the members of each RGBA using the
+.r .g, .b, .a fields, or you can cast the `RGBA*` to an `unsigned char*`.
+The support code only looks at the RGB values in each `RGBA`, so you
 don’t need to worry about the alpha value of a particular pixel (it
 can be left unchanged at 255 ). Instead, you’ll use the alpha value
 set by the slider in the GUI, which you’ll use when setting RGB
-values you paint. TheRGBAs are stored in row-major order. Each
-consecutiveRGBAis one pixel to the right of the last one, and they
+values you paint. The `RGBA`s are stored in row-major order. Each
+consecutive `RGBA` is one pixel to the right of the last one, and they
 wrap around at the border of the image to the left column of the
 next row (just like the characters on this page).
 
@@ -797,7 +766,7 @@ We’ve spent a lot of time ensuring that our support code doesn’t
 leak memory, and we expect you’ll do the same. Prefer automatic
 storage to dynamic storage unless you are allocating a lot of memory.
 Try to use smart pointers instead of raw pointers wherever possible,
-i. e. avoid usingnewanddelete.
+i. e. avoid using `new` and `delete`.
 As a reminder - go to the C++ help sessions. If you miss them, the
 presentations are posted online.
 
@@ -825,12 +794,12 @@ investments you can make at this point.
 
 
 You may have already run into this snafu before in your CS career
-but if you haven’t, beware of integer division. In C++,255 / 256
+but if you haven’t, beware of integer division. In C++, 255 / 256
 turns out to be 0.
 To avoid this problem, whenever you divide two integers, first cast
-one of them tofloat. Alternatively if one of the numbers is a
+one of them to `float`. Alternatively if one of the numbers is a
 constant, append “.0” or “.f” to the end of it. For example,foo/
-should be writtenfoo/256.0orfoo/256.f.
+should be written `foo/256.0` or `foo/256.f`.
 
 ## 8 Handing In
 
@@ -873,11 +842,11 @@ _Don’t leave it until the last minute._
 Be sure to compare your implementation to the demo prior to
 handing in! For this and all future projects, hand in your entire
 projectsdirectory (i.e. the one containing all the code and the
-CS123.profile), not justBrush. Before you hand in your code, write
-a briefreadmefile that explains any design decisions you made and
+`CS123.pro`), not just Brush. Before you hand in your code, write
+a brief `readme` file that explains any design decisions you made and
 any bugs your program might have. We will be more lenient while
 grading if we find a bug that was mentioned in your readme file.
-Call your readme file something likeREADME_Brush.txt(you’ll be
+Call your readme file something like `README_Brush.txt` (you’ll be
 using the same code for all your assignments this semester).
 For this assignment as well as all future assignments, please reference
 the GitHub Classroom and Gradescope guide here in order to hand-
