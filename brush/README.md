@@ -588,13 +588,13 @@ instances._
 Within your work on the `Canvas2D`, you’ll also need to work with
 various brush types.
 To work on this project, you’ll edit the various Brush classes (although
-you’ll probably leaveBrushuntouched), and within the ui
+you’ll probably leave Brush untouched), and within the ui
 section, you’ll edit `Canvas2D.[cpp, h]`. It’s perfectly OK to add
 methods, member variables, etc., to these classes.
 Obviously at some point you’ll need to create and hold onto a `Brush`.
 This should be part of (i.e., a member variable of) the `Canvas2D`
 class; when the sole instance of this class is created, you’ll want to
-create aBrushas part of it.
+create a Brush as part of it.
 Another aside on software design: we have the constant, linear,
 and quadratic brushes, all of which have some color of paint that
 they deposit on the canvas. When the user adjusts the "red" slider,
@@ -607,7 +607,7 @@ quadratic brushes, but not the `SmudgeBrush`. When the user selects
 the smudge brush option in the interface, the color sliders would be
 greyed out. That results in a lot of complexity for something that
 really makes almost no difference, so we put the brush color into
-theBrushclass, and expect you to adjust it when the sliders move,
+the Brush class, and expect you to adjust it when the sliders move,
 whether it’s a constant brush or a smudge brush. Adjusting it on
 the smudge brush has no effect on anything, but at least you can do
 exactly the same thing no matter what type of brush you have – no
@@ -622,7 +622,7 @@ kind of brush? You have to figure that out. So you might want to
 compare `settings.brushRadius` to the previous radius value. To
 do so, you’ll need to record the previous radius value. This suggests
 you might want to add not only a `Brush` to `Canvas2D`, but also an
-intwith a name like `m_current_radius`.
+int with a name like `m_current_radius`.
 In short: `Canvas2D` is where you’ll want to store any persistent data
 in your program.
 NB: Suppose you decide you want to add a `Brush`, or a `Brush` reference, or a `Brush` pointer as a member of `Canvas2D`, and try
@@ -778,7 +778,7 @@ but if you haven’t, beware of integer division. In C++, 255 / 256
 turns out to be 0.
 To avoid this problem, whenever you divide two integers, first cast
 one of them to `float`. Alternatively if one of the numbers is a
-constant, append “.0” or “.f” to the end of it. For example,foo/
+constant, append “.0” or “.f” to the end of it. For example, foo/
 should be written `foo/256.0` or `foo/256.f`.
 
 ## 8 Handing In
