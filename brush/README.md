@@ -459,7 +459,7 @@ student, a relatively simple interface.
     can ignore the other methods — the ones associated to other
     projects —- in this class. As you might guess, when the user
     clicks the mouse in the 2D canvas of the interface, Qt calls the
-    mouseDownmethod with the location of the click. You, the
+    mouseDown method with the location of the click. You, the
     programmer, need to respond to this by making the canvas
     look different (i.e., by adding paint to the canvas). You do this
 with a three-step process:
@@ -477,9 +477,6 @@ CPU of your computer, has absolutely no effect on the
 displayed canvas, however. The displayed canvas contents
 are based entirely on stuff happening in the GPU.
 3. Invoke the `update` method of the `SupportCanvas2D`. This
-
-
-
 takes the altered `data` array and sends it to the GPU
 by invoking the right OpenGL functions. When `update`
 returns, the canvas in the UI will be displaying the new
