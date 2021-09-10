@@ -617,9 +617,7 @@ color blending.
 What about settings? When `settingsChanged` is called, all that you,
 the programmer, know is that something in the global `settings`
 structure is different from what it was a moment ago. Did the
-radius change? Did the color change? Did the use choose a new
-
-
+radius change? Did the color change? Did the user choose a new
 kind of brush? You have to figure that out. So you might want to
 compare `settings.brushRadius` to the previous radius value. To
 do so, you’ll need to record the previous radius value. This suggests
