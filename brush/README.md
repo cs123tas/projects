@@ -10,7 +10,7 @@ _Due Date_ : 10:00 PM EST on Sep 20, 2021.
 Complete this assignment by yourself with no help from anyone or
 anything except a current CS123 TA, the lecture notes, official textbook,
 and the professor. Hand in the assignment using Gradescope
-(which you’ll learn about through other handins) no later than 10:
+(which you’ll learn about through other handins) no later than 10:00
 PM on Sep 20, 2021. You are allowed to use up to 3 late days on
 this assignment.
 
@@ -64,7 +64,6 @@ The first three closely mimic physical airbrushes: they add paint
 at various rates and distributions over a circular area that can be
 varied in size. To implement the varying distributions of paint, your
 airbrushes will use a mask — an array of values (one per pixel) that
-
 indicates how much paint to apply at each point.
 
 All the airbrushes you are required to create are circular in shape.
@@ -100,9 +99,7 @@ brush. Because most pixels are very far from the click point, this is
 very slow and wasteful.
 
 This straw man algorithm can be improved by restricting our attention
- to pixels whose _x_ and _y_ coordinates are no more than _r_
-
-
+to pixels whose _x_ and _y_ coordinates are no more than _r_
 away from the click point’s x and y coordinates respectively. Now
 the only pixels we consider altering are those that lie in a square
 region around the click point. The time involved is proportional to
@@ -192,8 +189,8 @@ Constant : This distribution will place an equal amount of paint at
 each pixel within the airbrush’s radius.
 Linear : This distribution will place a linearly decreasing amount
 of paint at each pixel as you move away from the center point. So
-at the center point, you will have full intensity of paint, whereas
-atradiuspixels away from the center, no paint will be put on the
+at the center point, you will have full intensity of paint, where as
+at radius pixels away from the center, no paint will be put on the
 canvas.
 Quadratic : This distribution will place a quadratically decreasing
 amount of paint at each pixel as you move away from the center
@@ -319,7 +316,7 @@ are not enrolled in the half-credit course.
 
 Colors on our canvas are represented by four one byte unsigned char
 values, one for each of red, green, blue, and alpha (r, g, b,and
-afor short). These represent, respectively, how much red, green,
+a for short). These represent, respectively, how much red, green,
 and blue light are combined to make a color on some surface, and
 how opaque that surface is. So if you take some window screen and
 spray paint it blue, the red and green values will be zero; the blue
@@ -351,7 +348,7 @@ partly through the paint, etc. This "coverage by pigment" is the
 
 
 
-alpha value of the brush color. If you apply red paint witha = 255
+alpha value of the brush color. If you apply red paint with a = 255
 onto a blue canvas with a constant brush, just a single click, you get
 a solid red disk on a blue background. If you apply red paint with
 a = 70 in the same way, you get a blue canvas with a uniformly
@@ -401,17 +398,17 @@ a good choice.
 When you open the QtCreator project file, you’ll see, on the left,
 two views of the code (depending on what items you choose from
 the small menu at the top just to the right of the word “Projects”).
-One of these is File System, the other isProjects. They show
+One of these is File System, the other is Projects. They show
 you the same files, but the upper one is organized by the project
 structure. Thus all the header files (the ones ending in .h) are
 gathered together, albeit divided into logical groups, and all the
-Sourcefiles are too. If you double click on a file at the left, it’ll open
+Source files are too. If you double click on a file at the left, it’ll open
 up in the main window area on the right. I’ll describe files in the
 Project view using » separators, so that Headers » Brush » Brush.h
 indicates the file in the Headers section, Brush subsection, called
 `Brush.h`. For ordinary file system paths, I’ll use slashes, so that file
 is also `projects/brush/Brush.h`.
-Let’s look in theHeaderssection; theSourcessection is completely
+Let’s look in the Headers section; the Sources section is completely
 parallel. The subsections are brush, camera, gl, glew-...,
 lib, scenegraph, ui. Three of these are easy: brush, camera,
 and scenegraph each contain files corresponding to one of three
