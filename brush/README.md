@@ -443,8 +443,6 @@ but `Settings` and `Canvas2D` will matter to you.
 - The `MainWindow` class describes the appearance and behavior
     of the interface overall.
 - As you’ll have seen from the demo, one part of the interface is
-
-
 a canvas on the right-hand side; above this are a pair of options
 to make it a 2D canvas or a 3D one. The appearance/behavior of these
 two canvases are defined by `SupportCanvas2D`
