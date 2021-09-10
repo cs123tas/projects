@@ -343,11 +343,6 @@ range of possibilities: there could be so much pigment that nothing
 shows through the paint; there could be less pigment (think of
 something like cranberry juice) so that the underlying color shows
 partly through the paint, etc. This "coverage by pigment" is the
-
-
-
-
-
 alpha value of the brush color. If you apply red paint with a = 255
 onto a blue canvas with a constant brush, just a single click, you get
 a solid red disk on a blue background. If you apply red paint with
@@ -444,7 +439,7 @@ by each pixel. If you look into the `RGBA` structure, you’ll see that
 it’s just a fancy name for dealing with four adjacent bytes of data,
 but provides some helpful functions for adding or subtracting pixel
 values, for instance.
-Next, there’s theuisection. Most of these items you’ll never touch,
+Next, there’s the ui section. Most of these items you’ll never touch,
 but`Settings` and `Canvas2D` will matter to you.
 
 - The `MainWindow` class describes the appearance and behavior
@@ -576,7 +571,7 @@ asking OpenGL to communicate with the GPU, which then transfers
 a large block of data to the CPU, which you, the programmer, see as
 the return value from `data`. You alter that returned array of pixels
 by ‘adding paint’, but in doing so, you’re merely altering an array
-in CPU memory. When you invoke theupdatemethod (which has
+in CPU memory. When you invoke the update method (which has
 been inherited from the Qt object representing the canvas), that
 modified array of pixels is sent to the GPU for display, and the
 appearance of the canvas on your computer actually changes.
@@ -601,7 +596,7 @@ instances._
 Within your work on the `Canvas2D`, you’ll also need to work with
 various brush types.
 To work on this project, you’ll edit the various Brush classes (although
-you’ll probably leaveBrushuntouched), and within theui
+you’ll probably leaveBrushuntouched), and within the ui
 section, you’ll edit `Canvas2D.[cpp, h]`. It’s perfectly OK to add
 methods, member variables, etc., to these classes.
 Obviously at some point you’ll need to create and hold onto a `Brush`.
