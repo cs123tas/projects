@@ -469,7 +469,7 @@ on the canvas. The `data` method of
 values representing the canvas’s contents.
 2. Change some of the values in this array of data. For instance,
 if you’re applying paint with a red constant brush,
-you might setdata[i]to be an `RGBA` whose contents are
+you might setdata[i] to be an `RGBA` whose contents are
 {255, 0, 0, 255}for several values of _i_ , one corresponding to 
 each pixel that needs paint applied. Changing these
 values, i.e., altering the contents of some variable in the
@@ -763,8 +763,6 @@ in some way; feel free to hack away to your heart’s content! Just
 be sure to keep the support code intact for your future assignments.
 Back up your files often, or better yet, use version control.
 You might also feel like some things are missing. That’s because
-
-
 there are things missing! Feel free to extend the support code to
 provide whatever functionality you need. Since this course will
 get complex quickly, we recommend that you use the class and
