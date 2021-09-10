@@ -323,7 +323,7 @@ afor short). These represent, respectively, how much red, green,
 and blue light are combined to make a color on some surface, and
 how opaque that surface is. So if you take some window screen and
 spray-paint it blue, the red and green values will be zero; the blue
-will have its maximum value, and a will be about 20 percent of its
+will have its maximum value, and "a" will be about 20 percent of its
 maximum value, because window screen is mostly open space. We
 think (for now! Later in the semester we’ll have a lot more to say
 about color) of red, green, and blue ranging from 0 (no intensity)
@@ -359,7 +359,7 @@ purplish disk on it: the paint went everywhere, but you could see
 through it.
 
 You can see that the “coverage” value stored in the mask and the
-pigment-fraction (ora-value) of the paint itself have similar effects
+pigment-fraction (or a-value) of the paint itself have similar effects
 on the final color of the pixel. One thing to note is that the final
 alpha-value of the canvas pixel is still a hundred percent (represented
 as 255 ): painting solid white paper with cranberry juice doesn’t
