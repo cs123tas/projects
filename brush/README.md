@@ -509,7 +509,7 @@ radius!) There’s a little more discussion of this below.
 
 In Forms » ui » MainWindow.ui is a file that describes, in some Qt-
 specific way, the appearance of the main window of our application,
-along with its menubar, etc. If, in QtCreator, you double click on this
+along with its menu bar, etc. If, in QtCreator, you double click on this
 item, a UI editor will show up, and you can see how you might choose
 to move the label on the radius slider up by one millimeter, or change
 the font on the labels for the various brush types. If you were to click
@@ -798,8 +798,6 @@ For each assignment, we will ask some specific questions, and may
 give you other guidelines about what we expect you to turn in.
 Immediately after the due date for the algorithm handins, we will
 make available a handout that answers those questions and generally
-
-
 describes the TAs’ suggestions on how to approach the program.
 You are free to use the approach that we suggest in that second
 handout, but we recommend using your own method if you feel at
