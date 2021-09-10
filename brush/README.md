@@ -489,7 +489,7 @@ contents.
     structure.
 - The `Settings` class is the main tool for connecting you, the
     programmer, with what the support code provided interface is
-    doing. There’s a single instance,`settings`, of `Settings` created
+    doing. There’s a single instance, `settings`, of `Settings` created
     in the project. The other parts of the interface interact with
     `settings` so that when the user adjusts the “radius” slider for
     the brush, for instance, the value `settings.brushRadius` is altered. 
@@ -512,7 +512,6 @@ specific way, the appearance of the main window of our application,
 along with its menubar, etc. If, in QtCreator, you double click on this
 item, a UI editor will show up, and you can see how you might choose
 to move the label on the radius slider up by one millimeter, or change
-
 the font on the labels for the various brush types. If you were to click
 on the "Constant" radio button in the Brush panel, you’d see lots of
 information about it displayed; in particular, you’d see it’s associated
@@ -534,7 +533,7 @@ hides from you, the programmer, a complex sequence of operation.
 Qt communicates (via OpenGL) with the GPU to say that it wants
 to run a GPU program that will display things in a certain region
 of the display. Qt also creates various objects in CPU memory (for
-example, thesettingsstructure), some of which represent visual elements in the displayed window, and others of which (like `settings`)
+example, the settings structure), some of which represent visual elements in the displayed window, and others of which (like `settings`)
 serve other purposes. Qt then establishes a connection between that
 GPU program and the CPU objects, so that when the user clicks
 somewhere in the displayed window, these two entities — the CPU
