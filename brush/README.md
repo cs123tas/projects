@@ -411,9 +411,7 @@ CS123 projects. As you might guess, you’ll be messing with the
 files in brush, but not touching the other two, at least for this
 project. If you’ve “built” the project, there may be a file (you may
 have to close and reopen the project or QtCreator to see it), called
-
-
-`ui_mainwindow.h`, in which the soleCanvas2Dfor the project is
+`ui_mainwindow.h`, in which the sole Canvas2D for the project is
 declared. You’ll never need to look at this file, but if you do, you’ll
 see that when an instance of the `Ui_MainWindow` class is created,
 that `Canvas2D` is also created.
@@ -440,7 +438,7 @@ it’s just a fancy name for dealing with four adjacent bytes of data,
 but provides some helpful functions for adding or subtracting pixel
 values, for instance.
 Next, there’s the ui section. Most of these items you’ll never touch,
-but`Settings` and `Canvas2D` will matter to you.
+but `Settings` and `Canvas2D` will matter to you.
 
 - The `MainWindow` class describes the appearance and behavior
     of the interface overall.
