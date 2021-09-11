@@ -162,7 +162,7 @@ you can instead compute the _squared_ distance and check whether
 that’s less than 36. In particular, when we were doing distance
 computations earlier and asked whether
 
-![](images/pic6.png)
+![](images/pic6new.png)
 
 was less than 6 , we could equally well have asked whether
 
