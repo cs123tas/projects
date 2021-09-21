@@ -7,7 +7,6 @@
 **Instructions:** Complete this assignment by yourself with no help from anyone or anything except a current CS123 TA, the lecture notes, official textbook, and the professor. Hand in the assignment using Gradescope (which you’ll learn about through other handins) no later than 10:00 PM on October 4th, 2021. You are allowed to use up to 3 late days on this assignment.
 
 ## Introduction
--------------------------
 
 **NOTE: Shapes is one of the more time-consuming projects in this class.
 You will need to allocate time for writing your code and for debugging.
@@ -51,7 +50,6 @@ you to consider in your design.
 
 
 ## Demo
--------------------------
 
 The demo, as you have seen (you have played with it, haven't you?),
 presents you with a list of shapes from which to choose, the option of
@@ -74,7 +72,6 @@ desirable to allow tesselation values below a certain point, as you lose
 determining features of the shape you are tesselating.
 
 ## Requirements
--------------------------
 The wireframe/solid toggle and the shape's orientation are both taken
 care of by the support code. What you need to do is write the routines
 that, given a shape type and some tesselation parameters, compute the
@@ -142,7 +139,6 @@ want. Particularly interesting extensions will earn you extra credit.
 See the *Extra Credit* section below for details.
 
 ## Shape Specification
--------------------------
 Now when we say "tesselate some shape," you're going to need a lot more
 information than just tesselation parameters. The location of a shape as
 well as its size and orientation are important in writing the good,
@@ -172,7 +168,6 @@ to a point.
 0.5.
 
 ## Support Code
--------------------------
 You will be using the same support code as you used last time. 
 
 Begin by looking at the *ExampleShape* class in ExampleShape.cpp/h. 
@@ -229,7 +224,6 @@ to alot extra time for this approach, as it can cause a lot of extra
 issues.
 
 ## Extra Credit And Half-Credit
--------------------------
 
 ### Extra Credit
 
@@ -257,7 +251,6 @@ not enrolled in the half-credit course.
     or speak with a TA.
 
 ## Handing In
--------------------------
 
 You'll probably notice that you'll be handing in your Brush code along
 with your Shapes code. Don't worry about it. Rename your README from
@@ -275,7 +268,6 @@ hand it in. If your code does not compile, we will ask you to resubmit
 it and will give you a late penalty!
 
 ## FAQ
----------------
 
 ### I am very confused about this assignment. What am I supposed to do?
 
