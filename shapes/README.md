@@ -256,8 +256,7 @@ You'll probably notice that you'll be handing in your Brush code along
 with your Shapes code. Don't worry about it. Rename your README from
 Brush to README\_Brush.txt to avoid any confusion.
 
-To hand in your assignment, type ***/course/cs1230/bin/cs1230\_handin
-shapes*** at a shell prompt. Please include a **README\_Shapes.txt** with
+To hand in your assignment, upload it to Gradescope. Please include a **README\_Shapes.txt** with
 your handin containing basic information about your design decisions and
 any known bugs or extra credit.
 
