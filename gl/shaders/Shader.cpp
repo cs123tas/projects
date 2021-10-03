@@ -283,6 +283,7 @@ void Shader::discoverUniforms() {
         GLint arraySize = 0;
         GLenum type;
         GLchar name[bufSize];
+        memset(name, 0, sizeof(name));
         glGetActiveUniform(m_programID, i, bufSize, &nameLength, &arraySize, &type, name);
         name[std::min(nameLength, bufSize - 1)] = 0;
 
@@ -300,6 +301,8 @@ void Shader::discoverUniforms() {
 
 bool Shader::isUniformArray(const GLchar *name, GLsizei nameLength) {
     // Check if the last 3 characters are '[0]'
+    if (nameLength < 3)
+        return false;
     return (name[nameLength - 3] == '[') &&
            (name[nameLength - 2] == '0') &&
            (name[nameLength - 1] == ']');
