@@ -2,9 +2,9 @@
 
 ### Introduction to Computer Graphics, Fall 2019
 
-*Due Monday, October 18 at 11:59pm*
+*Due Monday, October 18 at 10:00pm*
 
-**Instructions:** Complete this assignment by yourself without any help from anyone or anything except a current CS123 TA, the lecture notes, official textbook, and the professor. Submit the assignment on Gradescope no later than 11:59pm on Monday, October 18. You are allowed to use up to 3 late days on this assignment.
+**Instructions:** Complete this assignment by yourself without any help from anyone or anything except a current CS123 TA, the lecture notes, official textbook, and the professor. Submit the assignment on Gradescope no later than 10:00pm on Monday, October 18. You are allowed to use up to 3 late days on this assignment.
 
 ## Introduction
 
