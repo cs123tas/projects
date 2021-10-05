@@ -4,13 +4,11 @@
 
 *Due Monday, October 18 at 10:00pm*
 
-**Instructions:** Complete this assignment by yourself without any help from anyone or anything except a current CS123 TA, the lecture notes, official textbook, and the professor. Submit the assignment on Gradescope no later than 10:00pm on Monday, October 18. You are allowed to use up to 3 late days on this assignment.
+**Instructions:** Complete this assignment by yourself without any help from anyone or anything except a current CS 1230 TA, the lecture notes, official textbook, and the professor. Submit the assignment on Gradescope no later than 10:00pm on Monday, October 18. You are allowed to use up to 3 late days on this assignment.
 
 ## Introduction
 
-In Shapes, you wrote code that sent 3D data to the GPU for real-time rendering with OpenGL. OpenGL uses vertices to form triangles to approximate shapes. Unfortunately, using this method, we would need an infinite number of triangles to render a truly curved surface. Because this method of rendering does not simulate how light travels through a scene, it is also difficult to achieve photorealistic results.
-
-In this assignment and the next you will be implementing a basic raytracer, a renderer that breaks away from the limitations of real-time rendering and more importantly, lets you make really cool looking images.
+In this assignment and the next you will be implementing a basic raytracer, a rendering algorithm that simulates how light rays bounce around a scene (and lets you make really cool-looking images!)
 
 ## Requirements
 
@@ -28,7 +26,7 @@ One of the advantages of ray tracing is that you don’t have to work with appro
 
 ### A Simple Illumination Model
 
-Like the OpenGL renderer, you will be using a limited illumination model. We only expect you to handle the ambient and diffuse lighting terms of the simple illumination model (no attenuation or shadows yet). In this sense, your rendering will look a lot like the output of OpenGL — but better. You should, however, leave room in your design for a more complex model of illumination. The next assignment, Ray, will extend what you do in this assignment to handle a recursive illumination model.
+You will be using a limited illumination model. We only expect you to handle the ambient and diffuse lighting terms of the simple illumination model (no attenuation or shadows yet). You should, however, leave room in your design for a more complex model of illumination. The next assignment, Ray, will extend what you do in this assignment to handle a recursive illumination model.
 
 The global lighting coefficients can be found in `CS123SceneData.h`. You should pay attention to this struct:
 
