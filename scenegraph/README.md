@@ -1,6 +1,6 @@
 # Project 3 — Intersect
 
-### Introduction to Computer Graphics, Fall 2019
+### Introduction to Computer Graphics, Fall 2021
 
 *Due Monday, October 18 at 10:00pm*
 
