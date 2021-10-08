@@ -7,7 +7,7 @@
 
 class RayScene;
 
-class Camera;
+class CS123SceneCameraData;
 
 /**
  * @class Canvas2D
@@ -24,7 +24,7 @@ public:
     void setScene(RayScene *scene);
 
     // UI will call this from the button on the "Ray" dock
-    void renderImage(Camera *camera, int width, int height);
+    void renderImage(CS123SceneCameraData *camera, int width, int height);
 
     // This will be called when the settings have changed
     virtual void settingsChanged();

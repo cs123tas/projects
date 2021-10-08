@@ -114,7 +114,7 @@ void Canvas2D::setScene(RayScene *scene) {
     m_rayScene.reset(scene);
 }
 
-void Canvas2D::renderImage(Camera *camera, int width, int height) {
+void Canvas2D::renderImage(CS123SceneCameraData *camera, int width, int height) {
     if (m_rayScene) {
         // @TODO: raytrace the scene based on settings
         //        YOU MUST FILL THIS IN FOR INTERSECT/RAY
