@@ -320,13 +320,13 @@ void MainWindow::fileOpen() {
     if (!file.isNull()) {
         if (file.endsWith(".xml")) {
             m_sceneParser = std::unique_ptr<CS123XmlSceneParser>(new CS123XmlSceneParser(file.toLatin1().data()));
-            if (m_sceneParser.parse()) {
+            if (m_sceneParser->parse()) {
                 m_canvas3D->loadSceneviewSceneFromParser(*m_sceneParser);
                 ui->showSceneviewInstead->setChecked(true);
 
                 // Set the camera for the new scene
                 CS123SceneCameraData camera;
-                if (m_sceneParser.getCameraData(camera)) {
+                if (m_sceneParser->getCameraData(camera)) {
                     camera.pos[3] = 1;
                     camera.look[3] = 0;
                     camera.up[3] = 0;
@@ -403,7 +403,7 @@ void MainWindow::renderImage() {
         QSize activeTabSize = ui->tabWidget->currentWidget()->size();
         // ui->canvas2D->renderImage(m_canvas3D->getCamera(), activeTabSize.width(), activeTabSize.height());
         CS123SceneCameraData camera;
-        m_sceneParser.getCameraData(camera);
+        m_sceneParser->getCameraData(camera);
         ui->canvas2D->renderImage(&camera, activeTabSize.width(), activeTabSize.height());
 
         // Swap the "stop rendering" button for the "render" button
