@@ -67,7 +67,11 @@ You will want to use this equation to compute the R, G and B values independentl
 
 A limited amount of support code is provided for ray tracing. Your final (rasterized) output image will reside on the 2D image canvas, the same one you used for Brush. Code carefully! You’ll (hopefully) be reusing all of the code you write in this assignment for Ray. Most of the design, this time, will be your own.
 
-We provide you with a stencil class, `RayScene`, in `RayScene.cpp/h`. In this project you will be creating a raytracer rendering of whatever scene you currently have loaded (via the File/Open menu option). You should make use of your `Scene` code (i.e. the parsing code you wrote for Lab 3). One option would be to let your `Scene` load the scene first, and then create your `RayScene` based on the contents of your `Scene` at the time the Render button on the Ray dock is clicked. A copy constructor might be very useful for exactly this (copy constructors create an object by initializing it with an object of the same class), though there are other ways to get the necessary contents.
+We provide you with a stencil class, `RayScene`, in `RayScene.cpp/h`. In this project you will be creating a raytracer rendering of whatever scene you currently have loaded (via the File/Open menu option).
+
+You can access scenes to open from https://github.com/cs123tas/data, or /course/cs1230/data/scenes on the department machines.
+
+You should make use of your `Scene` code (i.e. the parsing code you wrote for Lab 3). One option would be to let your `Scene` load the scene first, and then create your `RayScene` based on the contents of your `Scene` at the time the Render button on the Ray dock is clicked. A copy constructor might be very useful for exactly this (copy constructors create an object by initializing it with an object of the same class), though there are other ways to get the necessary contents.
 
 You will also need to figure out how to handle implicit shape intersections. You can create new classes for each implicit shape, or you can extend your existing Shapes classes to handle these intersections. Doing this may require modifications to the `Shape.h` interface. Consider the benefits and drawbacks of implementing your implicit shapes separately vs. alongside your existing shapes code.
 
