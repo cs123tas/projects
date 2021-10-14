@@ -389,7 +389,7 @@ void MainWindow::renderImage() {
     ui->tabWidget->setCurrentIndex(TAB_2D);
 
     OpenGLScene *glScene = m_canvas3D->getScene();
-    if (glScene) {
+    if (glScene && m_sceneParser) {
         // TODO: Set up RayScene from glScene and call ui->canvas2D->setScene()
 
         // Disable the UI so the user can't interfere with the raytracing
