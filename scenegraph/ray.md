@@ -1,18 +1,15 @@
----
-author:
-- Introduction to Computer Graphics, Fall 2020
-title: "Project 6: Ray"
----
+# Project 6: Ray
+### Introduction to Computer Graphics, Fall 2021
+
+*Due Date: 10:00 PM EST on November 1st, 2021*
 
 # Instructions
-
-*Due Date*: 10:00 PM EST on .
 
 Complete this assignment by yourself with no help from anyone or
 anything except a current CS123 TA, the lecture notes, official
 textbook, and the professor. Hand in the assignment using Gradescope
 (which you'll learn about through other handins) no later than 10:00 PM
-on . You are allowed to use up to 3 late days on this assignment.
+on November 1st You are allowed to use up to 3 late days on this assignment.
 
 # Introduction
 
@@ -66,62 +63,38 @@ you will want to terminate the recursion when the intensity of the
 contributed color drops below a reasonable threshold.
 
 Just to review, the lighting model you will be implementing is:
-$$I_{\lambda}=k_{a}O_{a\lambda}+\sum_{i=1}^{m}f_{att\,i}I_{\lambda\,i}\left[k_{d}O_{d\lambda}(\hat{N}\cdot\hat{L}_{i})+k_{s}O_{s\lambda}(\hat{R}_{i}\cdot\hat{V})^{n}\right]+k_{s}O_{r\lambda}I_{r\lambda}$$
-Here, the subscripts $a$, $d$, $s$, and $r$ stand for ambient, diffuse,
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=I_{\lambda}=k_{a}O_{a\lambda}&plus;\sum_{i=1}^{m}f_{att\,i}I_{\lambda\,i}\left[k_{d}O_{d\lambda}(\hat{N}\cdot\hat{L}_{i})&plus;k_{s}O_{s\lambda}(\hat{R}_{i}\cdot\hat{V})^{n}\right]&plus;k_{s}O_{r\lambda}I_{r\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{\lambda}=k_{a}O_{a\lambda}&plus;\sum_{i=1}^{m}f_{att\,i}I_{\lambda\,i}\left[k_{d}O_{d\lambda}(\hat{N}\cdot\hat{L}_{i})&plus;k_{s}O_{s\lambda}(\hat{R}_{i}\cdot\hat{V})^{n}\right]&plus;k_{s}O_{r\lambda}I_{r\lambda}" title="I_{\lambda}=k_{a}O_{a\lambda}+\sum_{i=1}^{m}f_{att\,i}I_{\lambda\,i}\left[k_{d}O_{d\lambda}(\hat{N}\cdot\hat{L}_{i})+k_{s}O_{s\lambda}(\hat{R}_{i}\cdot\hat{V})^{n}\right]+k_{s}O_{r\lambda}I_{r\lambda}" /></a>
+
+Here, the subscripts <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a" title="a" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?d" title="d" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a>, and <a href="https://www.codecogs.com/eqnedit.php?latex=r" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r" title="r" /></a> stand for ambient, diffuse,
 specular, and reflected, respectively.
 
-$I_{\lambda}$
-
-:   is the intensity of the light (or for our purposes, you can just
+- <a href="https://www.codecogs.com/eqnedit.php?latex=I_{\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{\lambda}" title="I_{\lambda}" /></a>: is the intensity of the light (or for our purposes, you can just
     think of it as the color) and the $\lambda$ subscript is for each
     wavelength (red, green, and blue).
 
-$k$
+- <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>: is a constant coefficient. For example, <a href="https://www.codecogs.com/eqnedit.php?latex=k_{a}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k_{a}" title="k_{a}" /></a> is the ambient coeff.
 
-:   is a constant coefficient. For example, $k_{a}$ is the ambient
-    coeff.
-
-$O$
-
-:   is the color of the object being hit by the ray. For example,
-    $O_{d\lambda}$ is the diffuse color at the point of ray intersection
+- <a href="https://www.codecogs.com/eqnedit.php?latex=O" target="_blank"><img src="https://latex.codecogs.com/gif.latex?O" title="O" /></a>: is the color of the object being hit by the ray. For example,
+    <a href="https://www.codecogs.com/eqnedit.php?latex=O_{d\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?O_{d\lambda}" title="O_{d\lambda}" /></a> is the diffuse color at the point of ray intersection
     on the object.
+- <a href="https://www.codecogs.com/eqnedit.php?latex=m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?m" title="m" /></a>: is the number of lights.
 
-$m$
+- <a href="https://www.codecogs.com/eqnedit.php?latex=f_{att\,i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f_{att\,i}" title="f_{att\,i}" /></a>: is the attenuation for light <a href="https://www.codecogs.com/eqnedit.php?latex=i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i" title="i" /></a>.
 
-:   is the number of lights.
+- <a href="https://www.codecogs.com/eqnedit.php?latex=I_{\lambda\,i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{\lambda\,i}" title="I_{\lambda\,i}" /></a>: is the intensity of light <a href="https://www.codecogs.com/eqnedit.php?latex=i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i" title="i" /></a>.
 
-$f_{att\,i}$
+- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{N}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{N}" title="\hat{N}" /></a>: is the normalized normal to $O$ at the point of intersection.
 
-:   is the attenuation for light $i$.
+- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{L}_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{L}_{i}" title="\hat{L}_{i}" /></a>: is the normalized vector from the intersection to light <a href="https://www.codecogs.com/eqnedit.php?latex=i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i" title="i" /></a>.
 
-$I_{\lambda\,i}$
+- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{R}_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{R}_{i}" title="\hat{R}_{i}" /></a>:   is the normalized, reflected light from light $i$
 
-:   is the intensity of light $i$.
+- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{V}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{V}" title="\hat{V}" /></a>:   is the normalized line of sight
 
-$\hat{N}$
+- <a href="https://www.codecogs.com/eqnedit.php?latex=n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n" title="n" /></a>:   is the specular exponent
 
-:   is the normalized normal to $O$ at the point of intersection.
-
-$\hat{L}_{i}$
-
-:   is the normalized vector from the intersection to light $i$
-
-$\hat{R}_{i}$
-
-:   is the normalized, reflected light from light $i$
-
-$\hat{V}$
-
-:   is the normalized line of sight
-
-$n$
-
-:   is the specular exponent
-
-$I_{r\lambda}$
-
-:   is the intensity of the reflected light
+- <a href="https://www.codecogs.com/eqnedit.php?latex=I_{r\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{r\lambda}" title="I_{r\lambda}" /></a>:   is the intensity of the reflected light
 
 Please note that this equation is slightly different that from the
 slides. **You are expected to implement** ***this*** **equation.** The
@@ -133,39 +106,39 @@ ambient light.
 
 The most exciting part of this assignment is implementing specular
 inter-object reflection! Suppose you are calculating the color of a
-pixel $p$. The ray $r_0$ you shot through pixel $p$ intersects surface
-$s_0$. Evaluate the lighting model above at the surface $s_0$. At this
+pixel $p$. The ray <a href="https://www.codecogs.com/eqnedit.php?latex=r_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_0" title="r_0" /></a> you shot through pixel $p$ intersects surface
+<a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>. Evaluate the lighting model above at the surface <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>. At this
 point, we know all of the terms in the equation *except for*
-$I_{r\lambda}$, the light reflected onto $s_0$ by other objects. To
-calculate $I_{r\lambda}$, we will shoot another ray, starting from
-$s_0$. This ray, $r_1$, will be the reflection of $r_0$ about the
-surface normal at $s_0$.
+<a href="https://www.codecogs.com/eqnedit.php?latex=I_{r\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{r\lambda}" title="I_{r\lambda}" /></a>, the light reflected onto $s_0$ by other objects. To
+calculate <a href="https://www.codecogs.com/eqnedit.php?latex=I_{r\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{r\lambda}" title="I_{r\lambda}" /></a>, we will shoot another ray, starting from
+<a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>. This ray, <a href="https://www.codecogs.com/eqnedit.php?latex=r_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_1" title="r_1" /></a>, will be the reflection of <a href="https://www.codecogs.com/eqnedit.php?latex=r_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_0" title="r_0" /></a> about the
+surface normal at <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>.
 
-Then, we do the same thing all over again! If $r_1$ intersects an object
-at surface point $s_1$, then we calculate the lighting model at $s_1$.
+Then, we do the same thing all over again! If <a href="https://www.codecogs.com/eqnedit.php?latex=r_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_1" title="r_1" /></a> intersects an object
+at surface point <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a>, then we calculate the lighting model at <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a>.
 If our maximum recursion depth were 1, then we would know that the color
-we calculated from the lighting model at $s_1$ would equal the reflected
-light we need to take into account at $s_0$. In other words, the color
-calculated at $s_1$ (without adding the contribution of reflected light
-on $s_1$) would equal $I_{r\lambda}$ at $s_0$.
+we calculated from the lighting model at <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a> would equal the reflected
+light we need to take into account at <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>. In other words, the color
+calculated at <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a> (without adding the contribution of reflected light
+on <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a>) would equal <a href="https://www.codecogs.com/eqnedit.php?latex=I_{r\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{r\lambda}" title="I_{r\lambda}" /></a> at <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>.
 
 Suppose our maximum recursion depth were 2. Then, we would shoot another
-ray $r_2$ out from $s_1$. The ray $r_2$ is the reflection of $r_1$ about
-the surface normal at $s_1$. If $r_2$ does not intersect any objects,
-then the intensity of the reflected light on $s_0$ would be the
-evaluation of the lighting model at $s_1$. If $r_2$ intersects another
-object, then the intensity of the reflected light on $s_1$ (i.e.
-$I_{r\lambda}$) will be the evaluation of the lighting model at $s_2$
-(without adding the contribution of reflected light on $s_2$). The
-intensity of reflected light on $s_0$ would be the evaluation of the
-lighting model at $s_1$ (adding the contribution of reflected light on
-$s_1$).
+ray <a href="https://www.codecogs.com/eqnedit.php?latex=r_2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_2" title="r_2" /></a> out from <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a>. The ray <a href="https://www.codecogs.com/eqnedit.php?latex=r_2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_2" title="r_2" /></a> is the reflection of <a href="https://www.codecogs.com/eqnedit.php?latex=r_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_1" title="r_1" /></a>  about
+the surface normal at <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a>. If <a href="https://www.codecogs.com/eqnedit.php?latex=r_2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_2" title="r_2" /></a> does not intersect any objects,
+then the intensity of the reflected light on <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a> would be the
+evaluation of the lighting model at <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a>. If <a href="https://www.codecogs.com/eqnedit.php?latex=r_2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_2" title="r_2" /></a> intersects another
+object, then the intensity of the reflected light on <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a> (i.e.
+<a href="https://www.codecogs.com/eqnedit.php?latex=I_{r\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{r\lambda}" title="I_{r\lambda}" /></a>) will be the evaluation of the lighting model at <a href="https://www.codecogs.com/eqnedit.php?latex=s_2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_2" title="s_2" /></a>
+(without adding the contribution of reflected light on <a href="https://www.codecogs.com/eqnedit.php?latex=s_2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_2" title="s_2" /></a>). The
+intensity of reflected light on <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a> would be the evaluation of the
+lighting model at <a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a> (adding the contribution of reflected light on
+<a href="https://www.codecogs.com/eqnedit.php?latex=s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_1" title="s_1" /></a>).
 
-For a maximum recursion depth of $d$, we will recur until we get to
-surface point $s_d$, or until we shoot out a ray that does not intersect
-anything. Remember that when we get to surface point $s_d$, we do not
+For a maximum recursion depth of <a href="https://www.codecogs.com/eqnedit.php?latex=d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?d" title="d" /></a>, we will recur until we get to
+surface point <a href="https://www.codecogs.com/eqnedit.php?latex=s_d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_d" title="s_d" /></a>, or until we shoot out a ray that does not intersect
+anything. Remember that when we get to surface point <a href="https://www.codecogs.com/eqnedit.php?latex=s_d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_d" title="s_d" /></a>, we do not
 want to recur any more. Therefore, we do not take into account reflected
-light when evaluating the lighting model at $s_d$.
+light when evaluating the lighting model at <a href="https://www.codecogs.com/eqnedit.php?latex=s_d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_d" title="s_d" /></a>.
 
 ## Texture Mapping
 
@@ -184,19 +157,19 @@ All of the scenefiles and textures are in the** `data` **repo**.
 
 ## Shadows
 
-Suppose you are calculating the color of a surface point $s$. For each
-point light $\ell$ in the scene, send a ray $r$ (a "shadow ray\") from
-$s$ to $\ell$. If $r$ intersects any objects on the way from $s$ to
-$\ell$, then $s$ is occluded and you should not take into account the
-contribution of light from $\ell$ to $s$.
+Suppose you are calculating the color of a surface point <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a>. For each
+point light <a href="https://www.codecogs.com/eqnedit.php?latex=\ell" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\ell" title="\ell" /></a> in the scene, send a ray <a href="https://www.codecogs.com/eqnedit.php?latex=r" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r" title="r" /></a> (a "shadow ray\") from
+<a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a> to <a href="https://www.codecogs.com/eqnedit.php?latex=\ell" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\ell" title="\ell" /></a>. If <a href="https://www.codecogs.com/eqnedit.php?latex=r" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r" title="r" /></a> intersects any objects on the way from $s$ to
+<a href="https://www.codecogs.com/eqnedit.php?latex=\ell" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\ell" title="\ell" /></a>, then <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a> is occluded and you should not take into account the
+contribution of light from <a href="https://www.codecogs.com/eqnedit.php?latex=\ell" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\ell" title="\ell" /></a> to <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a>.
 
-For each directional light $d$, you will follow the same process as you
+For each directional light <a href="https://www.codecogs.com/eqnedit.php?latex=d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?d" title="d" /></a>, you will follow the same process as you
 did with point lights. However, as explained below, directional lights
-do not have a position. A surface point $s$ will be considered occluded
+do not have a position. A surface point <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a> will be considered occluded
 if the shadow ray starting at $s$ and pointing in the opposite direction
 of $d$ intersects *any* object in the scene. In other words, we are
 pretending that the directional light is positioned infinitely far away
-from $s$.
+from <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a>.
 
 ## Directional Lighting
 
@@ -212,16 +185,16 @@ lights**.
 You must implement attenuation for point lights. To do this, you will
 multiply the contribution of a point light to a surface by
 
-$$\text{min}\left(\frac{1}{c_{\text{constant}} + d \cdot c_{\text{linear}} + d^2 \cdot c_{\text{quadratic}}}, \;1\right)$$
+<a href="https://www.codecogs.com/eqnedit.php?latex=\text{min}\left(\frac{1}{c_{\text{constant}}&space;&plus;&space;d&space;\cdot&space;c_{\text{linear}}&space;&plus;&space;d^2&space;\cdot&space;c_{\text{quadratic}}},&space;\;1\right)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\text{min}\left(\frac{1}{c_{\text{constant}}&space;&plus;&space;d&space;\cdot&space;c_{\text{linear}}&space;&plus;&space;d^2&space;\cdot&space;c_{\text{quadratic}}},&space;\;1\right)" title="\text{min}\left(\frac{1}{c_{\text{constant}} + d \cdot c_{\text{linear}} + d^2 \cdot c_{\text{quadratic}}}, \;1\right)" /></a>
 
-where $d$ is the distance from the point light to the surface. This is
+where <a href="https://www.codecogs.com/eqnedit.php?latex=d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?d" title="d" /></a> is the distance from the point light to the surface. This is
 exactly how you implemented attenuation in Lab 3. Take a look at the
 `CS123SceneLightData` struct in `lib/CS123SceneData.h`. The `function`
 field of this struct contains the constants
-$(c_{\text{constant}}, c_{\text{linear}},$ and $c_{\text{quadratic}})$
+<a href="https://www.codecogs.com/eqnedit.php?latex=(c_{\text{constant}},&space;c_{\text{linear}},$&space;and&space;$c_{\text{quadratic}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(c_{\text{constant}},&space;c_{\text{linear}},$&space;and&space;$c_{\text{quadratic}})" title="(c_{\text{constant}}, c_{\text{linear}},$ and $c_{\text{quadratic}})" /></a>
 you will need to compute attenuation. Specifically, `function.x` =
-$c_{\text{constant}}$, `function.y` = $c_{\text{linear}}$, and
-`function.z` = $c_{\text{quadratic}}$.
+<a href="https://www.codecogs.com/eqnedit.php?latex=c_{\text{constant}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?c_{\text{constant}}" title="c_{\text{constant}}" /></a>, `function.y` = <a href="https://www.codecogs.com/eqnedit.php?latex=c_{\text{linear}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?c_{\text{linear}}" title="c_{\text{linear}}" /></a>, and
+`function.z` = <a href="https://www.codecogs.com/eqnedit.php?latex=c_{\text{quadratic}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?c_{\text{quadratic}}" title="c_{\text{quadratic}}" /></a>.
 
 # Testing
 
@@ -243,9 +216,9 @@ interesting scenes.
 ## Texture Mapping SNAFUs
 
 When texture mapping planes you need to be careful. If you're texture
-mapping the negative $z$ face of the cube, you'll be mapping the
-intersection point's $x$ position to the $u$ in $(u,v)$ space. The
-problem is when you go left-to-right on that face, your $x$ values are
+mapping the negative <a href="https://www.codecogs.com/eqnedit.php?latex=z" target="_blank"><img src="https://latex.codecogs.com/gif.latex?z" title="z" /></a> face of the cube, you'll be mapping the
+intersection point's <a href="https://www.codecogs.com/eqnedit.php?latex=x" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x" title="x" /></a> position to the <a href="https://www.codecogs.com/eqnedit.php?latex=u" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u" title="u" /></a> in <a href="https://www.codecogs.com/eqnedit.php?latex=(u,v)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(u,v)" title="(u,v)" /></a> space. The
+problem is when you go left-to-right on that face, your <a href="https://www.codecogs.com/eqnedit.php?latex=x" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x" title="x" /></a> values are
 actually going from positive to negative. This isn't the only cube face
 that something like this will happen on, so use `cube_test.xml` to check
 each face.
@@ -280,27 +253,17 @@ you, can make it even cooler by doing some sweet extra credit. Here are
 some ideas (book sections are included if there's significant discussion
 of the topic):
 
-Antialiasing
-
-:   Brute force supersampling isn't hard to do and antialiased images
+Antialiasing:   Brute force supersampling isn't hard to do and antialiased images
     look really sexy. If you're feeling brave, try your hand at adaptive
     supersampling (15.10.4) or stochastic supersampling (16.12.4)
 
-Transparency
+Transparency:   (16.5.2)
 
-:   (16.5.2)
-
-Motion blur
-
-:    
+Motion blur 
 
 Depth-of-field
 
-:    
-
-Fewer intersection tests
-
-:   (15.10.2) Bounding volumes, hierarchical bounding volumes, octrees,
+Fewer intersection tests:   (15.10.2) Bounding volumes, hierarchical bounding volumes, octrees,
     and kd-trees are all things to try that will get big speedups on
     complex scenes since most of the clock cycles go to intersection
     tests. Mucho bonus points if you do one of these. Really fast
@@ -308,31 +271,21 @@ Fewer intersection tests
     they're really good. It is highly *encouraged* that you do some sort
     of spacial subdivision, but certainly not required at all.
 
-Constructive solid geometry
+Constructive solid geometry:   (a.k.a. CSG, 12.7)
 
-:   (a.k.a. CSG, 12.7)
-
-Bump mapping
-
-:   Like texture mapping, except each texel contains information about
+Bump mapping:   Like texture mapping, except each texel contains information about
     the normals instead of color values. It's a great way to "add"
     geometry to an object without having to actually render the
     geometry.
 
-Texture mapping
+Texture mapping:   and/or intersecting other shapes, like the torus
 
-:   and/or intersecting other shapes, like the torus
-
-Spotlights
-
-:   Spotlights have position, direction, and an aperture in degrees. If
+Spotlights:   Spotlights have position, direction, and an aperture in degrees. If
     a light is a spotlight, `CS123SceneLightData`'s `m_type` will be
     equal to `LIGHT_SPOT` and `m_aperture` will contain the aperture
     size.
 
-Optimizations
-
-:   Be careful here. "Premature optimization is the root of all
+Optimizations:   Be careful here. "Premature optimization is the root of all
     evil."[^2] You'll learn that he's right at some point in your
     career, but let's not learn that lesson on Ray. Get the basic
     functionality done then go for the gusto. You may find profiling
@@ -343,20 +296,14 @@ Optimizations
     lab; in some cases, it would take an entire night to generate a
     16x16 pixel image!
 
-Multithreading
-
-:   Raytracing is "embarrassingly parallel" because a ray does not
+Multithreading:   Raytracing is "embarrassingly parallel" because a ray does not
     depend on the outcome of any of the other rays. Each ray cast per
     scanline can be made into its own thread. Feel free to use QThreads
     to help.
 
-Texture filtering
+Texture filtering:   (bilinear, trilinear, what have you)
 
-:   (bilinear, trilinear, what have you)
-
-Whatever else you can think of!
-
-:    
+Whatever else you can think of!    
 
 Remember to make a few scenefiles to show off the extra credit you did.
 If you create your own additional scene files, please put them in
@@ -385,18 +332,9 @@ be very unhappy.
 
 # Handing In
 
-To hand in your code, run `/course/cs1230/bin/cs1230_handin ray` in the
-directory containing `CS123.pro`. Before you hand in, please create a
-`README_Ray.txt` file which details any design decisions you made and
-identifies any bugs or known issues in your program. Make sure you
-thoroughly test and debug your program and ensure that it does not have
-any memory leaks.
+To hand in your assignment, upload your repo to Gradescope. Please include a README_Ray.txt with your handin containing basic information about your design decisions and any known bugs or extra credit.
 
-For all assignments in this course, we will test your code on department
-machines, so we expect it to compile on department machines. If you're
-developing locally, test your code on a department machine before you
-hand it in. If your code does not compile, we will ask you to resubmit
-it and will give you a late penalty!
+For all assignments in this course, we will test your code on department machines, so we expect it to compile on department machines. If you're developing locally, test your code on a department machine before you hand it in. If your code does not compile, we will ask you to resubmit it and will give you a late penalty!
 
 [^1]: By "easily," we mean that we should only have to change it in
     *one* place. A `const int` in a common header file would be an
