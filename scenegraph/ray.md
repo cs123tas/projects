@@ -70,7 +70,7 @@ Here, the subscripts <a href="https://www.codecogs.com/eqnedit.php?latex=a" targ
 specular, and reflected, respectively.
 
 - <a href="https://www.codecogs.com/eqnedit.php?latex=I_{\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{\lambda}" title="I_{\lambda}" /></a>: is the intensity of the light (or for our purposes, you can just
-    think of it as the color) and the $\lambda$ subscript is for each
+    think of it as the color) and the <a href="https://www.codecogs.com/eqnedit.php?latex=\lambda" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda" title="\lambda" /></a> subscript is for each
     wavelength (red, green, and blue).
 
 - <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>: is a constant coefficient. For example, <a href="https://www.codecogs.com/eqnedit.php?latex=k_{a}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k_{a}" title="k_{a}" /></a> is the ambient coeff.
@@ -84,13 +84,13 @@ specular, and reflected, respectively.
 
 - <a href="https://www.codecogs.com/eqnedit.php?latex=I_{\lambda\,i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{\lambda\,i}" title="I_{\lambda\,i}" /></a>: is the intensity of light <a href="https://www.codecogs.com/eqnedit.php?latex=i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i" title="i" /></a>.
 
-- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{N}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{N}" title="\hat{N}" /></a>: is the normalized normal to $O$ at the point of intersection.
+- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{N}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{N}" title="\hat{N}" /></a>: is the normalized normal to <a href="https://www.codecogs.com/eqnedit.php?latex=O" target="_blank"><img src="https://latex.codecogs.com/gif.latex?O" title="O" /></a> at the point of intersection.
 
 - <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{L}_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{L}_{i}" title="\hat{L}_{i}" /></a>: is the normalized vector from the intersection to light <a href="https://www.codecogs.com/eqnedit.php?latex=i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i" title="i" /></a>.
 
-- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{R}_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{R}_{i}" title="\hat{R}_{i}" /></a>:   is the normalized, reflected light from light $i$
+- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{R}_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{R}_{i}" title="\hat{R}_{i}" /></a>:   is the normalized, reflected light from light <a href="https://www.codecogs.com/eqnedit.php?latex=i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i" title="i" /></a>
 
-- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{V}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{V}" title="\hat{V}" /></a>:   is the normalized line of sight
+- <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{V}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{V}" title="\hat{V}" /></a>: is the normalized line of sight
 
 - <a href="https://www.codecogs.com/eqnedit.php?latex=n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n" title="n" /></a>:   is the specular exponent
 
@@ -106,10 +106,10 @@ ambient light.
 
 The most exciting part of this assignment is implementing specular
 inter-object reflection! Suppose you are calculating the color of a
-pixel $p$. The ray <a href="https://www.codecogs.com/eqnedit.php?latex=r_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_0" title="r_0" /></a> you shot through pixel $p$ intersects surface
+pixel <a href="https://www.codecogs.com/eqnedit.php?latex=p" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p" title="p" /></a>. The ray <a href="https://www.codecogs.com/eqnedit.php?latex=r_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_0" title="r_0" /></a> you shot through pixel <a href="https://www.codecogs.com/eqnedit.php?latex=p" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p" title="p" /></a> intersects surface
 <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>. Evaluate the lighting model above at the surface <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>. At this
 point, we know all of the terms in the equation *except for*
-<a href="https://www.codecogs.com/eqnedit.php?latex=I_{r\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{r\lambda}" title="I_{r\lambda}" /></a>, the light reflected onto $s_0$ by other objects. To
+<a href="https://www.codecogs.com/eqnedit.php?latex=I_{r\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{r\lambda}" title="I_{r\lambda}" /></a>, the light reflected onto <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a> by other objects. To
 calculate <a href="https://www.codecogs.com/eqnedit.php?latex=I_{r\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{r\lambda}" title="I_{r\lambda}" /></a>, we will shoot another ray, starting from
 <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>. This ray, <a href="https://www.codecogs.com/eqnedit.php?latex=r_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_1" title="r_1" /></a>, will be the reflection of <a href="https://www.codecogs.com/eqnedit.php?latex=r_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r_0" title="r_0" /></a> about the
 surface normal at <a href="https://www.codecogs.com/eqnedit.php?latex=s_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_0" title="s_0" /></a>.
@@ -166,8 +166,8 @@ contribution of light from <a href="https://www.codecogs.com/eqnedit.php?latex=\
 For each directional light <a href="https://www.codecogs.com/eqnedit.php?latex=d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?d" title="d" /></a>, you will follow the same process as you
 did with point lights. However, as explained below, directional lights
 do not have a position. A surface point <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a> will be considered occluded
-if the shadow ray starting at $s$ and pointing in the opposite direction
-of $d$ intersects *any* object in the scene. In other words, we are
+if the shadow ray starting at <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a> and pointing in the opposite direction
+of <a href="https://www.codecogs.com/eqnedit.php?latex=d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?d" title="d" /></a> intersects *any* object in the scene. In other words, we are
 pretending that the directional light is positioned infinitely far away
 from <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a>.
 
