@@ -43,6 +43,15 @@ glm::mat4x4 OrbitingCamera::getPerspectiveMatrix() const {
     throw 0; // not implemented
 }
 
+CS123SceneCameraData OrbitingCamera::getCameraData() const {
+    glm::mat4x4 invViewMatrix = glm::inverse(getViewMatrix());
+    glm::vec4 pos = invViewMatrix * glm::vec4(0.f, 0.f, 0.f, 1.f);
+    glm::vec4 look = invViewMatrix * glm::vec4(0.f, 0.f, -1.f, 0.f);
+    glm::vec4 up = invViewMatrix * glm::vec4(0.f, 1.f, 0.f, 0.f);
+    CS123SceneCameraData camData = {pos, look, up, m_angleY, m_aspectRatio, -1.f, -1.f};
+    return camData;
+}
+
 void OrbitingCamera::mouseDown(int x, int y) {
     m_oldX = x;
     m_oldY = y;

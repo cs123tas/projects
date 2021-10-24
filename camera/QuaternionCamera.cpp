@@ -34,6 +34,12 @@ glm::mat4x4 QuaternionCamera::getPerspectiveMatrix() const {
     throw 0; // not implemented
 }
 
+
+CS123SceneCameraData QuaternionCamera::getCameraData() const {
+    const CS123SceneCameraData camData = {getPosition(), getLook(), getUp(), getHeightAngle(), getAspectRatio(), -1.f, -1.f};
+    return camData;
+}
+
 glm::vec4 QuaternionCamera::getPosition() const {
     return m_eye;
 }

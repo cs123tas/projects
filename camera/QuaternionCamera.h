@@ -31,6 +31,7 @@ public:
     virtual glm::mat4x4 getViewMatrix() const;
     virtual glm::mat4x4 getScaleMatrix() const;
     virtual glm::mat4x4 getPerspectiveMatrix() const;
+    virtual CS123SceneCameraData getCameraData() const;
 
     glm::vec4 getPosition() const;
     glm::vec4 getLook() const;

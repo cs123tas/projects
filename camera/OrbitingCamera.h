@@ -26,6 +26,7 @@ public:
     virtual glm::mat4x4 getViewMatrix() const;
     virtual glm::mat4x4 getScaleMatrix() const;
     virtual glm::mat4x4 getPerspectiveMatrix() const;
+    virtual CS123SceneCameraData getCameraData() const;
 
     virtual void mouseDown(int x, int y);
     virtual void mouseDragged(int x, int y);

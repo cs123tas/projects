@@ -32,6 +32,9 @@ public:
     // settings.
     virtual glm::mat4x4 getPerspectiveMatrix() const;
 
+    // Returns the CS123SceneCameraData
+    virtual CS123SceneCameraData getCameraData() const;
+
     // Returns the current position of the camera.
     glm::vec4 getPosition() const;
 

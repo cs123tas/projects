@@ -2,6 +2,7 @@
 #define CAMERA_H
 
 #include <glm.hpp>
+#include "CS123SceneData.h"
 
 /**
  * @class Camera
@@ -29,6 +30,8 @@ public:
     // Returns the matrix the unhinges the perspective view volume, given the current camera
     // settings.
     virtual glm::mat4x4 getPerspectiveMatrix() const = 0;
+
+    virtual CS123SceneCameraData getCameraData() const = 0;
 
     //
     // The following functions are called for mouse events on the 3D canvas tab.

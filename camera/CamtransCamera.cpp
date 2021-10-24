@@ -39,6 +39,11 @@ glm::mat4x4 CamtransCamera::getPerspectiveMatrix() const {
     return glm::mat4x4();
 }
 
+CS123SceneCameraData CamtransCamera::getCameraData() const {
+    // @TODO: [CAMTRANS] Fill this in...
+    throw 0;
+}
+
 glm::vec4 CamtransCamera::getPosition() const {
     // @TODO: [CAMTRANS] Fill this in...
     return glm::vec4();
