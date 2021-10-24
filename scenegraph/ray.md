@@ -1,7 +1,7 @@
 # Project 6: Ray
 ### Introduction to Computer Graphics, Fall 2021
 
-*Due Date: 11:59 PM EST on November 1st, 2021*
+*Due Date: 11:59 PM EST on November 2nd, 2021*
 
 # Instructions
 
