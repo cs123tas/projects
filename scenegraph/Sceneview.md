@@ -37,7 +37,7 @@ Recall from class that a scene graph's purpose is to deal with hierarchical tran
 
 In this assignment, you are only responsible for setting up the objects and the lights. We take care of setting up the camera for you; your implementation in CamtransCamera will be used automatically by the support code.
 
-**Hint**: YOu should use *setLight* and *applyMaterial* method of m_phongShader, which take care of a lot of tricky OpenGL stuff for you.
+**Hint**: You should use *setLight* and *applyMaterial* method of m_phongShader, which take care of a lot of tricky OpenGL stuff for you.
 
 ## Rendering the Scene
 
