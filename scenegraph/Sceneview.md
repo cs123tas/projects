@@ -21,7 +21,7 @@ The demo has functionality for rendering wireframes and normals in sceneview sce
 
 The demo also implements LOD, which is part of the extra credit for this assignment. So the tessalation of the shapes within the demo will not match the sliders exactly. You are not required to update your scene according the the GUI parameters, and if you  do implement LOD it does not need to match the demo exactly.
 
-Lastly, the demo has the feature that after applying camera transformation (using orbit camera or camtrans camer) to a scene and click render on the ray tab, the same camera transformation is applied to the scene rendered by the ray tracer. You may implement this feature for extra credit. (**Hint**: Implement *getCamearData* method in CamtransCamera class that returns a current snapshot of CS123SceneCameraData, and use that function in MainWindow::renderImage().)
+Lastly, the demo has the feature that after applying camera transformation (using orbit camera or camtrans camer) to a scene and click render on the ray tab, the same camera transformation is applied to the scene rendered by the ray tracer. You may implement this feature for extra credit. (**Hint**: Implement *getCamearData* method that returns a current snapshot of CS123SceneCameraData in CamtransCamera class, and use that function in MainWindow::renderImage().)
 
 As in Intersect and Ray, you can use test files in [data](https://github.com/cs123tas/data) repository to compare your result with the demo.
 
