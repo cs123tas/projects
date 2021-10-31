@@ -31,7 +31,7 @@ Since you have already implemented a scene file parser, **you will be mostly mod
 
 ## The Scene Classes
 
-SceneviewScene (which you will complete in this assignment) implements an OpenGLScene. It will hold a list of objects that are to be rendered to the screen. In addition, the SceneviewScene will contain the cumulative transformation matrix for each object. In the \textit{setLights} method, the lights will be set up. Then, in the \textit{renderGeometry} method, each object will be rendered (you'll want to call upon your Shapes code for this).
+SceneviewScene (which you will complete in this assignment) implements an OpenGLScene. It will hold a list of objects that are to be rendered to the screen. In addition, the SceneviewScene will contain the cumulative transformation matrix for each object. In the *setLights* method, the lights will be set up. Then, in the *renderGeometry* method, each object will be rendered (you'll want to call upon your Shapes code for this).
 
 Recall from class that a scene graph's purpose is to deal with hierarchical transformations. Therefore, we have made a distinction in this assignment: objects and lights are part of the scene graph, and the camera is not. The camera is part of the canvas. You will find this distinction to be handy when it comes time to implement additional rendering interfaces. 
 
