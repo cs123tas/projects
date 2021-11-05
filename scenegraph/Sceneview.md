@@ -3,6 +3,10 @@
 
 *Due Date: 11:59 PM EST on November 11th, 2021*
 
+# Stencil changed
+
+**Stencil has changed at 3:35pm Nov 5, EST. Please update your stencil code by pulling or editing manually** 
+
 # Instructions
 
 Complete this assignment by yourself with no help from anyone or anything except a current CS123 TA, the lecture notes, official textbook, and the professor. Hand in the assignment using Gradescope. You are allowed to use up to 3 late days on this assignment.
@@ -21,7 +25,7 @@ The demo has functionality for rendering wireframes and normals in sceneview sce
 
 The demo also implements LOD, which is part of the extra credit for this assignment. So the tessalation of the shapes within the demo will not match the sliders exactly. You are not required to update your scene according the the GUI parameters, and if you  do implement LOD it does not need to match the demo exactly.
 
-Lastly, the demo has the feature that after applying camera transformation (using orbit camera or camtrans camera) to a scene and click render on the ray tab, the same camera transformation is applied to the scene rendered by the ray tracer. You may implement this feature for extra credit. (**Hint**: Implement *getCamearData* method that returns a current snapshot of CS123SceneCameraData in CamtransCamera class, and use that function in MainWindow::renderImage().)
+Lastly, the demo has the feature that after applying camera transformation (using orbit camera or camtrans camera) to a scene and click render on the ray tab, the same camera transformation is applied to the scene rendered by the ray tracer. You may implement this feature for extra credit. (**Hint**: Implement *getCamearData* method that returns a current snapshot of CS123SceneCameraData in CamtransCamera class, and use that function in MainWindow::renderImage(). The stencil has provided function signatures for getCameraData() and implementations for OrbitaCamera::getCameraData() and QueternionCamera::getCameraData().)
 
 As in Intersect and Ray, you can use test files in [data](https://github.com/cs123tas/data) repository to compare your result with the demo.
 
@@ -31,7 +35,7 @@ Since you have already implemented a scene file parser, **you will be mostly mod
 
 ## The Scene Classes
 
-SceneviewScene (which you will complete in this assignment) implements an OpenGLScene. It will hold a list of objects that are to be rendered to the screen. In addition, the SceneviewScene will contain the cumulative transformation matrix for each object. In the *setLights* method, the lights will be set up. Then, in the *renderGeometry* method, each object will be rendered (you'll want to call upon your Shapes code for this).
+SceneviewScene (which you will complete in this assignment) implements an OpenGLScene. It will hold a list of objects that are to be rendered to the screen. In addition, the SceneviewScene will contain the cumulative transformation matrix for each object. In the *setGlobalData* method, the global data will be set up. In the *setLights* method, the lights will be set up. Then, in the *renderGeometry* method, each object will be rendered (you'll want to call upon your Shapes code for this).
 
 Recall from class that a scene graph's purpose is to deal with hierarchical transformations. Therefore, we have made a distinction in this assignment: objects and lights are part of the scene graph, and the camera is not. The camera is part of the canvas. You will find this distinction to be handy when it comes time to implement additional rendering interfaces. 
 
@@ -53,7 +57,7 @@ You are not required to use any of the material properties of scene objects exce
 Be sure to test your program on as many scenes as possible! Also, this is the time to fix buggy Shapes and Camtrans code. You'll lose points again on Sceneview if your Shapes and/or Camtrans code doesn't work. Also, be sure to pay particular attention to the following areas of your implementation (although this is a non-exhaustive list): 
 - Does your program leak memory? 
 - Is your implementation efficient? 
-- Do all the scenes load correctly? 
+- Do all the scenes load correctly?
 - Is the lighting correct? 
 - Is the camera correct? 
 
@@ -78,7 +82,7 @@ Please check these FAQ entries before coming to TA hours. You should be able to 
 
 ## Scene too bright
 
-Did you remember to multiply the ambient object color by ambient coefficient and the diffuse object color by diffuse coefficient? Are your normals correct? Are they normalized? Is the homogeneous coordinate correct? A fault in any one of these can cause the problem.
+Did you remember to implement setGlobalData function to pass the global data to the shaders? Are your normals correct? Are they normalized? Is the homogeneous coordinate correct? A fault in any one of these can cause the problem.
 
 Your Camtrans may also be buggy. Look back at Camtrans and make sure your shapes all look correct, including the normals. 
 
