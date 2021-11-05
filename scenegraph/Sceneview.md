@@ -39,7 +39,7 @@ SceneviewScene (which you will complete in this assignment) implements an OpenGL
 
 Recall from class that a scene graph's purpose is to deal with hierarchical transformations. Therefore, we have made a distinction in this assignment: objects and lights are part of the scene graph, and the camera is not. The camera is part of the canvas. You will find this distinction to be handy when it comes time to implement additional rendering interfaces. 
 
-In this assignment, you are only responsible for setting up the objects and the lights. We take care of setting up the camera for you; your implementation in CamtransCamera will be used automatically by the support code.
+In this assignment, you are only responsible for setting up the global data, the objects, and the lights. We take care of setting up the camera for you; your implementation in CamtransCamera will be used automatically by the support code.
 
 **Hint**: You should use *setLight* and *applyMaterial* method of m_phongShader, which take care of a lot of tricky OpenGL stuff for you.
 
@@ -49,8 +49,7 @@ The rendering of your scene starts in the *paintGL* method found in SupportCanva
 
 Your job is to fill in the *renderGeometry* method to render the geometry of your scene using OpenGL. You will have to traverse the data structure in your SceneviewScene and render all the shapes by invoking your Shapes code.**You only need to tesselate your shapes once when you load a new scene - be careful not to retessellate your shapes every frame, or else your project might slow down significantly.** You can use m_phongShader to pass the corresponding transformation matrices from your scene graph before rendering the geometry. (Remember OpenGL labs?)
 
-You are not required to use any of the material properties of scene objects except the "diffuse" and
-"ambient" color properties. These are the only properties that determines the color of an object in Sceneview. You should make use of the CS123SceneMaterial struct and use the *applyMaterial* function in the support code, which wraps a few OpenGL calls for your convenience. This will handle using the material color properties for you. Remember to multiply by diffuse and ambient constants respectively.
+You are not required to use any of the material properties of scene objects except the "diffuse" and "ambient" color properties. These are the only properties that determines the color of an object in Sceneview. You should make use of the CS123SceneMaterial struct and use the *applyMaterial* function in the support code, which wraps a few OpenGL calls for your convenience. This will handle using the material color properties for you. Remember to multiply by diffuse and ambient constants respectively.
 
 # Grading
 
