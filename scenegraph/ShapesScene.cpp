@@ -113,6 +113,7 @@ void ShapesScene::renderPhongPass(SupportCanvas3D *context) {
 void ShapesScene::setPhongSceneUniforms() {
     m_phongShader->setUniform("useLighting", settings.useLighting);
     m_phongShader->setUniform("useArrowOffsets", false);
+    m_phongShader->setUniform("isShapeScene", true);
     m_phongShader->applyMaterial(m_material);
 }
 
