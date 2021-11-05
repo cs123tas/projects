@@ -54,12 +54,17 @@ void SceneviewScene::render(SupportCanvas3D *context) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     m_phongShader->bind();
+    setGlobalData();
     setSceneUniforms(context);
     setLights();
     renderGeometry();
     glBindTexture(GL_TEXTURE_2D, 0);
     m_phongShader->unbind();
 
+}
+
+void SceneviewScene::setGlobalData(){
+    // [TODO] pass global data to shader.vert using m_phongShader
 }
 
 void SceneviewScene::setSceneUniforms(SupportCanvas3D *context) {

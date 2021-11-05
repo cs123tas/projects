@@ -50,7 +50,8 @@ private:
     void loadNormalsShader();
     void loadNormalsArrowShader();
 
-    void setSceneUniforms(SupportCanvas3D *context);\
+    void setGlobalData();
+    void setSceneUniforms(SupportCanvas3D *context);
     void setMatrixUniforms(CS123::GL::Shader *shader, SupportCanvas3D *context);
     void setLights();
     void renderGeometry();
