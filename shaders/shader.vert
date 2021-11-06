@@ -9,9 +9,9 @@ out vec3 color; // Computed color for this vertex
 out vec2 texc;
 
 // global data
-float ka;
-float kd;
-float ks;
+uniform float ka;
+uniform float kd;
+uniform float ks;
 
 // Transformation matrices
 uniform mat4 p;
