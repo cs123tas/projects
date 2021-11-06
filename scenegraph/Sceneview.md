@@ -5,7 +5,7 @@
 
 # Stencil changed
 
-**Stencil has changed at 3:35pm Nov 5, EST. Please update your stencil code by pulling or editing manually** 
+**Stencil has changed at 5:20pm Nov 5, EST. Please update your stencil code by pulling or editing manually** 
 
 # Instructions
 
