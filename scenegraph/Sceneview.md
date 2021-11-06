@@ -49,7 +49,7 @@ The rendering of your scene starts in the *paintGL* method found in SupportCanva
 
 Your job is to fill in the *renderGeometry* method to render the geometry of your scene using OpenGL. You will have to traverse the data structure in your SceneviewScene and render all the shapes by invoking your Shapes code.**You only need to tessellate your shapes once when you load a new scene - be careful not to retessellate your shapes every frame, or else your project might slow down significantly.** You can use m_phongShader to pass the corresponding transformation matrices from your scene graph before rendering the geometry. (Remember OpenGL labs?)
 
-You are not required to use any of the material properties of scene objects except the "diffuse" and "ambient" color properties. These are the only properties that determines the color of an object in Sceneview. You should make use of the CS123SceneMaterial struct and use the *applyMaterial* function in the support code, which wraps a few OpenGL calls for your convenience. This will handle using the material color properties for you. Remember to multiply by diffuse and ambient constants respectively.
+You are not required to use any of the material properties of scene objects except the "diffuse" and "ambient" color properties. These are the only properties that determines the color of an object in Sceneview. You should make use of the CS123SceneMaterial struct and use the *applyMaterial* function in the support code, which wraps a few OpenGL calls for your convenience. This will handle using the material color properties for you. Lastly, remember to implement setGlobalData() to set coefficient values in the shader.
 
 # Grading
 
