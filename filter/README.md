@@ -50,12 +50,12 @@ your image (in the spatial domain) with the Sobel kernels. The Sobel kernels are
 the mathematical derivative of the image signal in the spatial domain. All of this math assumes your colors have 
 been normalized to [0,1] – don’t forget to multiply the end result by 255 to get back to [0, 255]!
 
-![convolve x and y sobel](/images/sobelconvolve.png)
+![convolve x and y sobel](/filter/images/sobelconvolve.png)
 
 Here, \∗ represents the 2-dimensional convolution operation. At each point in the image, the resulting gradient
 approximations can be combined to give the *gradient magnitude*, using
 
-![gradient mag formula](/images/gradientmag.png)
+![gradient mag formula](/filter/images/gradientmag.png)
 
 The Sobel kernels can be thought of as 3 × 3 approximations to first-derivative-of-Gaussian kernels. That is, 
 it is equivalent to first blurring the image using a 3 × 3 approximation to the Gaussian (a triangle), and then 
@@ -63,7 +63,7 @@ calculating first derivatives. Mathematically, it’s not *exactly* the derivati
 “close enough for government work!” It works because convolution and derivatives are both commutative and 
 associative (a very useful principle to remember, in general):
 
-![commutative and associative properties of convolution and derivatives](/images/derivativesandconvolution.png)
+![commutative and associative properties of convolution and derivatives](/filter/images/derivativesandconvolution.png)
 
 A 2D filter is separable if it can be expressed as the outer product of two vectors. Notice that the Sobel kernel 
 above can be written as a matrix product of a column vector *v* = [1,2,1]<sup>T</sup> and a row vector *h* = [−1, 0, 1].
@@ -71,7 +71,7 @@ It turns out that the matrix product of a column vector and a row vector is equi
 convolution of the two vectors. In other words, *v* ∗ *h* = *S*. So you can filter with *S* by filtering first with 
 *v*, and then filtering the result with *h*.
 
-![2d convolution with separable kernels](/images/2dconvfrom1dconv.png)
+![2d convolution with separable kernels](/filter/images/2dconvfrom1dconv.png)
 
 This separable convolution may be advantageous because it implies fewer arithmetic computations for each image point.
 You should also take note of the values in the filter function. Because the values are not in [0,1], you can get 
@@ -188,11 +188,11 @@ You can choose to implement either a two-dimensional DFT (simpler to code, but s
 
 Your algorithm must transform your image to the frequency domain, apply the filter, and then transform back to the spatial domain. In- stead of talking about one dimensional signals that represent changes in amplitude in time, here we are dealing with two dimensional sig- nals which represent intensity variations in space. These signals come in the form of images. The images we will deal with here are digital, and thus have a finite width and height in pixels, which we will assume have a real number value. Because our signals are discrete, we will need an analog of the one dimensional DFT for two dimensional signals. This analog is the following pair of transforms for the multidimensional DFT and its inverse:
 
-![2D DFT and invDFT](/images/2DDFTandInverse.png)
+![2D DFT and invDFT](/filter/images/2DDFTandInverse.png)
 
 Recall that *e*<sup>**i** θ</sup> = cosθ + **i**sinθ. Thus an MxN image has an MxN set of (complex) Fourier coefficients. To implement this transform, we would like an analog of the FFT, which will let us quickly compute the coefficients of the transform. In fact, we can do better. The above two dimensional DFTs are each seperable into two one dimensional DFTs which can be implemented with an FFT algorithm.
 
-![separable DFT for FFT](/images/1DDFTforFFT.png)
+![separable DFT for FFT](/filter/images/1DDFTforFFT.png)
 
 You may look online for more information about the Fourier transform, although your implementation must be your own work.
 
